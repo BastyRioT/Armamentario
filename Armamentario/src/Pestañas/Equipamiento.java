@@ -4,6 +4,12 @@
  */
 package Pestañas;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import javax.swing.Timer;
+
 /**
  *
  * @author nacho
@@ -15,7 +21,27 @@ public class Equipamiento extends javax.swing.JFrame {
      */
     public Equipamiento() {
         initComponents();
+        
+        timer.start();
     }
+    
+    Timer timer = new Timer(1000, new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                Calendar cal = new GregorianCalendar();
+                int hh, mm, ss, dia, mes, aa;
+                hh = cal.get(Calendar.HOUR_OF_DAY);
+                mm = cal.get(Calendar.MINUTE);
+                ss = cal.get(Calendar.SECOND);
+                
+                dia = cal.get(Calendar.DAY_OF_MONTH);
+                mes = cal.get(Calendar.MONTH);
+                aa = cal.get(Calendar.YEAR);
+                
+                lblHora.setText(hh+":"+mm+":"+ss);
+                lblFecha.setText(dia+"/"+(mes+1)+"/"+aa);
+                
+            }
+    });
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,9 +62,9 @@ public class Equipamiento extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblHora = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblFecha = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -91,11 +117,11 @@ public class Equipamiento extends javax.swing.JFrame {
 
         jLabel3.setText("Hora:");
 
-        jLabel4.setText("jLabel4");
+        lblHora.setText("jLabel4");
 
         jLabel5.setText("Fecha:");
 
-        jLabel6.setText("jLabel6");
+        lblFecha.setText("jLabel6");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -114,11 +140,11 @@ public class Equipamiento extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
@@ -145,11 +171,11 @@ public class Equipamiento extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel4))
+                    .addComponent(lblHora))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel6))
+                    .addComponent(lblFecha))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -301,9 +327,7 @@ public class Equipamiento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -312,5 +336,7 @@ public class Equipamiento extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblFecha;
+    private javax.swing.JLabel lblHora;
     // End of variables declaration//GEN-END:variables
 }
