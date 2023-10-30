@@ -34,9 +34,14 @@ public class Login extends javax.swing.JFrame {
         lbContraseña = new javax.swing.JLabel();
         txtContraseña = new javax.swing.JPasswordField();
         txtUsuario = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnIngresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Inicio Sesión");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        pnlInicio.setToolTipText("");
+        pnlInicio.setName(""); // NOI18N
 
         pnlCredenciales.setBorder(javax.swing.BorderFactory.createTitledBorder("Credenciales del Usuario"));
 
@@ -44,10 +49,10 @@ public class Login extends javax.swing.JFrame {
 
         lbContraseña.setText("Contraseña:");
 
-        jButton1.setText("Ingresar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnIngresar.setText("Ingresar");
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnIngresarActionPerformed(evt);
             }
         });
 
@@ -67,7 +72,7 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCredencialesLayout.createSequentialGroup()
                 .addContainerGap(154, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(140, 140, 140))
         );
         pnlCredencialesLayout.setVerticalGroup(
@@ -82,7 +87,7 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(lbContraseña)
                     .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
-                .addComponent(jButton1)
+                .addComponent(btnIngresar)
                 .addContainerGap(92, Short.MAX_VALUE))
         );
 
@@ -117,10 +122,11 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         Conexion.CLogin objetoLogin = new Conexion.CLogin();
         objetoLogin.validarUsuario(txtUsuario, txtContraseña);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnIngresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,7 +164,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnIngresar;
     private javax.swing.JLabel lbContraseña;
     private javax.swing.JLabel lbUsuario;
     private javax.swing.JPanel pnlCredenciales;

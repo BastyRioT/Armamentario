@@ -11,6 +11,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 /**
@@ -34,6 +35,7 @@ public class FrameInicio extends javax.swing.JFrame {
     itemAdmin.setIcon(iconoAdm);
     
      timer.start();
+     
     
     }
 
@@ -55,6 +57,10 @@ public class FrameInicio extends javax.swing.JFrame {
             }
     });
     
+    public void cerrarSesion() {
+        JOptionPane.showMessageDialog(null, "Sesión cerrada.");
+    }
+
 
     
     /**
@@ -175,6 +181,11 @@ public class FrameInicio extends javax.swing.JFrame {
         menuOpciones.setText("Opciones");
 
         itemLogout.setText("Cerrar Sesión");
+        itemLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemLogoutActionPerformed(evt);
+            }
+        });
         menuOpciones.add(itemLogout);
 
         mnbMenu.add(menuOpciones);
@@ -215,6 +226,15 @@ public class FrameInicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_btnArmasActionPerformed
+
+    private void itemLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLogoutActionPerformed
+         cerrarSesion();
+        // Cierra la ventana actual (FrameInicio)
+        this.dispose();
+        // Muestra la ventana de login
+        Login objetoLogin = new Login();
+        objetoLogin.setVisible(true);
+    }//GEN-LAST:event_itemLogoutActionPerformed
 
     /**
      * @param args the command line arguments

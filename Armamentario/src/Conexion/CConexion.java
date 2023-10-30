@@ -17,9 +17,9 @@ public class CConexion {
     Connection conectar;
     
     String usuario="root";
-    String contraseña="armamentario1515";
-    String bd="bdArmamentario";
-    String ip="localhost";
+    String contraseña="";
+    String bd="bdarmamentario";
+    String ip="127.0.0.1";
     String puerto="3306";
     
     String cadena = "jdbc:mysql://"+ip+":"+puerto+"/"+bd;
