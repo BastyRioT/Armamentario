@@ -37,13 +37,12 @@ public class CLogin {
             rs = ps.executeQuery();
             
             if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "El Usuario es Correcto.");
                 FrameInicio objetoInicio = new FrameInicio();
+                objetoInicio.setLocationRelativeTo(null);
                 objetoInicio.setVisible(true);
-                
             }
             else{
-               JOptionPane.showMessageDialog(null, "El Usuario es Incorrecto, Vuelva a intentar."); 
+               JOptionPane.showMessageDialog(null, "El Usuario o Contraseña son incorrectas, Vuelva a intentar."); 
             }
             
         } catch (SQLException e) {

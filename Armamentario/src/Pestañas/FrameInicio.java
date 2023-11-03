@@ -59,9 +59,17 @@ public class FrameInicio extends javax.swing.JFrame {
     
     public void cerrarSesion() {
         JOptionPane.showMessageDialog(null, "Sesión cerrada.");
+        this.dispose();
+        Login objetoLogin = new Login();
+        objetoLogin.setLocationRelativeTo(null);
+        objetoLogin.setVisible(true);
     }
 
-
+    public void usuarioSesion() {
+        //Aquí colocar codigo para que salga el nombre del usuario en el inicio
+        
+        //lblUsuario.setText();
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -72,7 +80,7 @@ public class FrameInicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSeparator1 = new javax.swing.JSeparator();
+        jPanel1 = new javax.swing.JPanel();
         imgCab = new javax.swing.JLabel();
         pnlInicio = new javax.swing.JPanel();
         btnArmas = new javax.swing.JButton();
@@ -90,11 +98,22 @@ public class FrameInicio extends javax.swing.JFrame {
         menuAdmin = new javax.swing.JMenu();
         itemAdmin = new javax.swing.JMenuItem();
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Armamentario");
-        setBackground(new java.awt.Color(255, 0, 51));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setIconImages(null);
+        setPreferredSize(new java.awt.Dimension(900, 500));
 
         imgCab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imgCab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imgInicio.png"))); // NOI18N
@@ -163,7 +182,7 @@ public class FrameInicio extends javax.swing.JFrame {
                 .addComponent(btnEquipamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
                 .addGroup(pnlInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblU)
                     .addComponent(lblUsuario))
@@ -206,34 +225,35 @@ public class FrameInicio extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnlInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addComponent(imgCab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(55, 55, 55))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addComponent(imgCab)
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(imgCab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(pnlInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(imgCab)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArmasActionPerformed
-        // TODO add your handling code here:
+        FrameArmas objetoArmas = new FrameArmas();
+        objetoArmas.setLocationRelativeTo(null);
+        objetoArmas.setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_btnArmasActionPerformed
 
     private void itemLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLogoutActionPerformed
          cerrarSesion();
-        // Cierra la ventana actual (FrameInicio)
-        this.dispose();
-        // Muestra la ventana de login
-        Login objetoLogin = new Login();
-        objetoLogin.setVisible(true);
     }//GEN-LAST:event_itemLogoutActionPerformed
 
     /**
@@ -266,7 +286,9 @@ public class FrameInicio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrameInicio().setVisible(true);
+                FrameInicio objetoInicio = new FrameInicio();
+                objetoInicio.setLocationRelativeTo(null);
+                objetoInicio.setVisible(true);
             }
         });
     }
@@ -278,7 +300,7 @@ public class FrameInicio extends javax.swing.JFrame {
     private javax.swing.JLabel imgCab;
     private javax.swing.JMenuItem itemAdmin;
     private javax.swing.JMenuItem itemLogout;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblF;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblH;
