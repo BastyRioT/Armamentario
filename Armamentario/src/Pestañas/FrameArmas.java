@@ -4,6 +4,7 @@
  */
 package Pestañas;
 
+import Armamento.EditarA;
 import Armamento.RegistroA;
 import Logica.LogicaArmas;
 import javax.swing.JOptionPane;
@@ -86,7 +87,6 @@ public class FrameArmas extends javax.swing.JFrame {
 
         btnRegistrar.setBackground(new java.awt.Color(40, 114, 51));
         btnRegistrar.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
-        btnRegistrar.setForeground(new java.awt.Color(0, 0, 0));
         btnRegistrar.setText("Registrar Arma");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,17 +96,19 @@ public class FrameArmas extends javax.swing.JFrame {
 
         btnEditar.setBackground(new java.awt.Color(40, 114, 51));
         btnEditar.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
-        btnEditar.setForeground(new java.awt.Color(0, 0, 0));
         btnEditar.setText("Dar de Baja");
 
         btnEditar1.setBackground(new java.awt.Color(40, 114, 51));
         btnEditar1.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
-        btnEditar1.setForeground(new java.awt.Color(0, 0, 0));
         btnEditar1.setText("Editar Arma");
+        btnEditar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditar1ActionPerformed(evt);
+            }
+        });
 
         btnVolver.setBackground(new java.awt.Color(40, 114, 51));
         btnVolver.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        btnVolver.setForeground(new java.awt.Color(0, 0, 0));
         btnVolver.setText("Volver");
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -247,6 +249,12 @@ public class FrameArmas extends javax.swing.JFrame {
         objetoRegistro.setVisible(true);
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
+    private void btnEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar1ActionPerformed
+        EditarA objetoEditar = new EditarA();
+        objetoEditar.setLocationRelativeTo(null);
+        objetoEditar.setVisible(true);
+    }//GEN-LAST:event_btnEditar1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -282,6 +290,7 @@ public class FrameArmas extends javax.swing.JFrame {
                 objetoArmas.setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

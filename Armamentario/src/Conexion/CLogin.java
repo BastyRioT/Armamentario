@@ -18,7 +18,7 @@ import java.sql.PreparedStatement;
  */
 public class CLogin {
     
-    public void validarUsuario(JTextField usuario, JPasswordField contrasena){
+    public boolean validarUsuario(JTextField usuario, JPasswordField contrasena){
         
         try {
             ResultSet rs=null;
@@ -37,9 +37,7 @@ public class CLogin {
             rs = ps.executeQuery();
             
             if (rs.next()) {
-                FrameInicio objetoInicio = new FrameInicio();
-                objetoInicio.setLocationRelativeTo(null);
-                objetoInicio.setVisible(true);
+                return true;
             }
             else{
                JOptionPane.showMessageDialog(null, "El Usuario o Contraseña son incorrectas, Vuelva a intentar."); 
@@ -48,5 +46,6 @@ public class CLogin {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error: "+e.toString());
         }
+        return false;
     }
 }

@@ -4,17 +4,16 @@
  */
 package Armamento;
 
-
 /**
  *
  * @author basty
  */
-public class RegistroA extends javax.swing.JFrame {
+public class EditarA extends javax.swing.JFrame {
 
     /**
      * Creates new form RegistroA
      */
-    public RegistroA() {
+    public EditarA() {
         initComponents();
     }
 
@@ -28,7 +27,7 @@ public class RegistroA extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlFondo = new javax.swing.JPanel();
-        btnRegistrar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
         txtNumero = new javax.swing.JTextField();
         txtDetalle = new javax.swing.JTextField();
         cmbCategoria = new javax.swing.JComboBox<>();
@@ -39,12 +38,7 @@ public class RegistroA extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registrar Arma");
 
-        btnRegistrar.setText("Registrar");
-        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarActionPerformed(evt);
-            }
-        });
+        btnEditar.setText("Editar");
 
         txtNumero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,7 +74,7 @@ public class RegistroA extends javax.swing.JFrame {
                     .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFondoLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnRegistrar)
+                        .addComponent(btnEditar)
                         .addGap(78, 78, 78)))
                 .addGap(182, 182, 182))
         );
@@ -100,7 +94,7 @@ public class RegistroA extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnRegistrar)
+                .addComponent(btnEditar)
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
@@ -126,10 +120,6 @@ public class RegistroA extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroActionPerformed
 
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        
-    }//GEN-LAST:event_btnRegistrarActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -147,28 +137,29 @@ public class RegistroA extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditarA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditarA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditarA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditarA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                RegistroA objetoRegistro = new RegistroA();
-                objetoRegistro.setLocationRelativeTo(null);
-                objetoRegistro.setVisible(true);
+                EditarA objetoEditar = new EditarA();
+                objetoEditar.setLocationRelativeTo(null);
+                objetoEditar.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JComboBox<String> cmbCategoria;
     private javax.swing.JLabel lbCategoria;
     private javax.swing.JLabel lbDetalle;

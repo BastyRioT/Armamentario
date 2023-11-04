@@ -73,9 +73,6 @@ public class LogicaArmas {
                 JOptionPane.showMessageDialog(null,e);
             }
         }
-        return modelo;
-        
-    }
-        
-            
+        return modelo;  
+    }          
 }
