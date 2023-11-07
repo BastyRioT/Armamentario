@@ -40,18 +40,6 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="menuAdmin">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Administracion"/>
-          </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="itemAdmin">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Ingresar"/>
-              </Properties>
-            </MenuItem>
-          </SubComponents>
-        </Menu>
       </SubComponents>
     </Menu>
   </NonVisualComponents>

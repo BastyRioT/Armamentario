@@ -31,7 +31,7 @@ public class FrameArmas extends javax.swing.JFrame {
         objetoLogin.setVisible(true);
     }
     
-    public void mostrarClientes()
+    public void mostrarArmamento()
     {
         LogicaArmas logica = new LogicaArmas();
         
@@ -63,8 +63,6 @@ public class FrameArmas extends javax.swing.JFrame {
         mnbMenu = new javax.swing.JMenuBar();
         menuOpciones = new javax.swing.JMenu();
         itemLogout = new javax.swing.JMenuItem();
-        menuAdmin = new javax.swing.JMenu();
-        itemAdmin = new javax.swing.JMenuItem();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -209,13 +207,6 @@ public class FrameArmas extends javax.swing.JFrame {
 
         mnbMenu.add(menuOpciones);
 
-        menuAdmin.setText("Administracion");
-
-        itemAdmin.setText("Ingresar");
-        menuAdmin.add(itemAdmin);
-
-        mnbMenu.add(menuAdmin);
-
         setJMenuBar(mnbMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -298,11 +289,9 @@ public class FrameArmas extends javax.swing.JFrame {
     private javax.swing.JButton btnEditar1;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnVolver;
-    private javax.swing.JMenuItem itemAdmin;
     private javax.swing.JMenuItem itemLogout;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JMenu menuAdmin;
     private javax.swing.JMenu menuOpciones;
     private javax.swing.JMenuBar mnbMenu;
     private javax.swing.JPanel pnlArmas;
