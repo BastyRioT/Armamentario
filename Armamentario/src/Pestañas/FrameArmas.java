@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
+
 /**
  *
  * @author basty
@@ -20,10 +21,13 @@ public class FrameArmas extends javax.swing.JFrame {
     /**
      * Creates new form FrameArmas
      */
+    private LogicaArmas logica;
     public FrameArmas() {
-        initComponents();
+        initComponents();  
+        logica = new LogicaArmas();
         mostrarArmamento();
     }
+    
     
     public void cerrarSesion() {
         JOptionPane.showMessageDialog(null, "Sesión cerrada.");
@@ -189,6 +193,11 @@ public class FrameArmas extends javax.swing.JFrame {
         });
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlFondoLayout = new javax.swing.GroupLayout(pnlFondo);
         pnlFondo.setLayout(pnlFondoLayout);
@@ -276,6 +285,12 @@ public class FrameArmas extends javax.swing.JFrame {
         //
     }//GEN-LAST:event_txtBuscarActionPerformed
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        String terminoBusqueda = txtBuscar.getText();
+        DefaultTableModel modelo = logica.buscarArma(terminoBusqueda);
+        tblArmas.setModel(modelo);
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -331,4 +346,6 @@ public class FrameArmas extends javax.swing.JFrame {
     private javax.swing.JTable tblArmas;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
+
+  
 }

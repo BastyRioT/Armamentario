@@ -40,4 +40,28 @@ public class LogicaEquipo {
         }
         return modelo;
     }
+    public DefaultTableModel buscarEquipamiento(String terminoBusqueda) {
+        DefaultTableModel modelo = null;
+        try {
+            String[] titulos = {"N° Serie", "Categoria", "Detalles"};
+            modelo = new DefaultTableModel(null, titulos);
+
+            Connection cn = CConexion.getConnection();
+            CallableStatement cst = cn.prepareCall("{call BuscarEquipamiento(?)}");
+            cst.setString(1, terminoBusqueda);
+            ResultSet rs = cst.executeQuery();
+
+            while (rs.next()) {
+                Object[] fila = {
+                    rs.getString("numeroSerie"),
+                    rs.getString("categoria"),
+                    rs.getString("detalle")
+                };
+                modelo.addRow(fila);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return modelo;
+    }
 }

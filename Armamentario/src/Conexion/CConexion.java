@@ -12,7 +12,7 @@ import java.sql.DriverManager;
  */
 public class CConexion {
 
-    static Connection con = null;
+    static Connection con =null;
 
     public static Connection getConnection(){
 
