@@ -82,7 +82,7 @@ public class RegistroA extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnRegistrar)
                         .addGap(78, 78, 78)))
-                .addGap(182, 182, 182))
+                .addContainerGap(182, Short.MAX_VALUE))
         );
         pnlFondoLayout.setVerticalGroup(
             pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

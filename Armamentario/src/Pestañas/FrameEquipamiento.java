@@ -7,6 +7,7 @@ package Pestañas;
 import Armamento.EditarA;
 import Armamento.RegistroA;
 import Logica.LogicaArmas;
+import Logica.LogicaEquipo;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
@@ -15,14 +16,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author basty
  */
-public class FrameArmas extends javax.swing.JFrame {
+public class FrameEquipamiento extends javax.swing.JFrame {
 
     /**
      * Creates new form FrameArmas
      */
-    public FrameArmas() {
+    public FrameEquipamiento() {
         initComponents();
-        mostrarArmamento();
+        mostrarEquipamiento();
     }
     
     public void cerrarSesion() {
@@ -33,10 +34,10 @@ public class FrameArmas extends javax.swing.JFrame {
         objetoLogin.setVisible(true);
     }
     
-    public void mostrarArmamento() {
-        LogicaArmas logica = new LogicaArmas();
-        DefaultTableModel modelo = logica.mostrarArmas();
-        tblArmas.setModel(modelo);
+    public void mostrarEquipamiento() {
+        LogicaEquipo logica = new LogicaEquipo();
+        DefaultTableModel modelo = logica.mostrarEquipo();
+        tblEquipo.setModel(modelo);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,11 +53,11 @@ public class FrameArmas extends javax.swing.JFrame {
         pnlFondo = new javax.swing.JPanel();
         pnlArmas = new javax.swing.JPanel();
         btnRegistrar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
-        btnEditar1 = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
         pnlsTabla = new javax.swing.JScrollPane();
-        tblArmas = new javax.swing.JTable();
+        tblEquipo = new javax.swing.JTable();
         txtBuscar = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         mnbMenu = new javax.swing.JMenuBar();
@@ -80,27 +81,27 @@ public class FrameArmas extends javax.swing.JFrame {
         setTitle("Armamento");
         setResizable(false);
 
-        pnlArmas.setBorder(javax.swing.BorderFactory.createTitledBorder("Armamento"));
+        pnlArmas.setBorder(javax.swing.BorderFactory.createTitledBorder("Equipamiento"));
 
         btnRegistrar.setBackground(new java.awt.Color(40, 114, 51));
         btnRegistrar.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
-        btnRegistrar.setText("Registrar Arma");
+        btnRegistrar.setText("Registrar Equipo");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
             }
         });
 
+        btnEliminar.setBackground(new java.awt.Color(40, 114, 51));
+        btnEliminar.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        btnEliminar.setText("Dar de Baja");
+
         btnEditar.setBackground(new java.awt.Color(40, 114, 51));
         btnEditar.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
-        btnEditar.setText("Dar de Baja");
-
-        btnEditar1.setBackground(new java.awt.Color(40, 114, 51));
-        btnEditar1.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
-        btnEditar1.setText("Editar Arma");
-        btnEditar1.addActionListener(new java.awt.event.ActionListener() {
+        btnEditar.setText("Editar Equipo");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditar1ActionPerformed(evt);
+                btnEditarActionPerformed(evt);
             }
         });
 
@@ -120,9 +121,9 @@ public class FrameArmas extends javax.swing.JFrame {
             .addGroup(pnlArmasLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlArmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnEditar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRegistrar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                    .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlArmasLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -135,15 +136,15 @@ public class FrameArmas extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnEditar1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnVolver)
                 .addContainerGap())
         );
 
-        tblArmas.setModel(new javax.swing.table.DefaultTableModel(
+        tblEquipo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -175,11 +176,11 @@ public class FrameArmas extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        pnlsTabla.setViewportView(tblArmas);
-        if (tblArmas.getColumnModel().getColumnCount() > 0) {
-            tblArmas.getColumnModel().getColumn(0).setResizable(false);
-            tblArmas.getColumnModel().getColumn(1).setResizable(false);
-            tblArmas.getColumnModel().getColumn(2).setResizable(false);
+        pnlsTabla.setViewportView(tblEquipo);
+        if (tblEquipo.getColumnModel().getColumnCount() > 0) {
+            tblEquipo.getColumnModel().getColumn(0).setResizable(false);
+            tblEquipo.getColumnModel().getColumn(1).setResizable(false);
+            tblEquipo.getColumnModel().getColumn(2).setResizable(false);
         }
 
         txtBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -201,7 +202,7 @@ public class FrameArmas extends javax.swing.JFrame {
                 .addGroup(pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlFondoLayout.createSequentialGroup()
                         .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBuscar)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(pnlsTabla, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE))
@@ -214,12 +215,13 @@ public class FrameArmas extends javax.swing.JFrame {
                 .addGroup(pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(pnlArmas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlFondoLayout.createSequentialGroup()
-                        .addGap(16, 16, 16)
+                        .addGap(0, 9, Short.MAX_VALUE)
                         .addGroup(pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBuscar))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pnlsTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pnlsTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)))
                 .addContainerGap())
         );
 
@@ -263,14 +265,12 @@ public class FrameArmas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        RegistroA objetoRegistro = new RegistroA();
-        objetoRegistro.setLocationRelativeTo(null);
-        objetoRegistro.setVisible(true);
+        //
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
-    private void btnEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar1ActionPerformed
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         //
-    }//GEN-LAST:event_btnEditar1ActionPerformed
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
         //
@@ -293,20 +293,21 @@ public class FrameArmas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameArmas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameEquipamiento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameArmas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameEquipamiento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameArmas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameEquipamiento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameArmas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameEquipamiento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FrameArmas objetoArmas = new FrameArmas();
+                FrameEquipamiento objetoArmas = new FrameEquipamiento();
                 objetoArmas.setLocationRelativeTo(null);
                 objetoArmas.setVisible(true);
             }
@@ -317,7 +318,7 @@ public class FrameArmas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnEditar1;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnVolver;
     private javax.swing.JMenuItem itemLogout;
@@ -328,7 +329,7 @@ public class FrameArmas extends javax.swing.JFrame {
     private javax.swing.JPanel pnlArmas;
     private javax.swing.JPanel pnlFondo;
     private javax.swing.JScrollPane pnlsTabla;
-    private javax.swing.JTable tblArmas;
+    private javax.swing.JTable tblEquipo;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }

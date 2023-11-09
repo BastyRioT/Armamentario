@@ -131,6 +131,11 @@ public class FrameInicio extends javax.swing.JFrame {
 
         btnEquipamiento.setBackground(new java.awt.Color(40, 114, 51));
         btnEquipamiento.setText("Equipamiento");
+        btnEquipamiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEquipamientoActionPerformed(evt);
+            }
+        });
 
         btnHistorial.setBackground(new java.awt.Color(40, 114, 51));
         btnHistorial.setText("Historial de Cambios");
@@ -233,12 +238,13 @@ public class FrameInicio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(imgCab)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(imgCab)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -255,6 +261,13 @@ public class FrameInicio extends javax.swing.JFrame {
     private void itemLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLogoutActionPerformed
          cerrarSesion();
     }//GEN-LAST:event_itemLogoutActionPerformed
+
+    private void btnEquipamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquipamientoActionPerformed
+        FrameEquipamiento objetoEquipo = new FrameEquipamiento();
+        objetoEquipo.setLocationRelativeTo(null);
+        objetoEquipo.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEquipamientoActionPerformed
 
     /**
      * @param args the command line arguments

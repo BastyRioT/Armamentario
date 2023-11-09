@@ -4,7 +4,6 @@
  */
 package Conexion;
 
-import Pestañas.FrameInicio;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
@@ -27,7 +26,7 @@ public class CLogin {
             Conexion.CConexion objetoConexion = new Conexion.CConexion();
             
             String consulta="select * from Usuario where Usuario.usuario =(?) and Usuario.contrasena =(?);";
-            ps=objetoConexion.estableceConexion().prepareCall(consulta);
+            ps=objetoConexion.getConnection().prepareCall(consulta);
             
             String contra = String.valueOf(contrasena.getPassword());
             

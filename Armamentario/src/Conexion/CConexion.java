@@ -5,35 +5,25 @@
 package Conexion;
 
 import com.mysql.jdbc.Connection;
-import javax.swing.JOptionPane;
 import java.sql.DriverManager;
-import java.sql.SQLException;
-
 /**
  *
  * @author yanar
  */
 public class CConexion {
-    Connection conectar;
-    
-    String usuario="root";
-    String contraseña="";
-    String bd="bdarmamentario";
-    String ip="127.0.0.1";
-    String puerto="3306";
-    
-    String cadena = "jdbc:mysql://"+ip+":"+puerto+"/"+bd;
-    
-    public Connection estableceConexion(){
-        try {
-            
+
+    static Connection con = null;
+
+    public static Connection getConnection(){
+
+        try{
             Class.forName("com.mysql.jdbc.Driver");
-            conectar = (Connection) DriverManager.getConnection(cadena,usuario,contraseña);
+            con = (Connection) DriverManager.getConnection( "jdbc:mysql://localhost:3306/bdarmamentario","root","");
+
             //JOptionPane.showMessageDialog(null, "Se conecto correctamente a la base de datos");
-            
-        }  catch (ClassNotFoundException | SQLException e) {
-            JOptionPane.showMessageDialog(null, "Problema en la conexion"+ e.toString());
+        }catch (Exception ex){
+            ex.printStackTrace();
         }
-        return conectar;
+        return con;
     }
 }

@@ -5,26 +5,26 @@
 package Logica;
 
 import Conexion.CConexion;
-import java.sql.CallableStatement;
 import com.mysql.jdbc.Connection;
-import javax.swing.table.DefaultTableModel;
+import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author basty
  */
-public class LogicaArmas {
+public class LogicaEquipo {
     
-    public DefaultTableModel mostrarArmas() {
+    public DefaultTableModel mostrarEquipo() {
         DefaultTableModel modelo = null;
         try {
             String[] titulos = {"N° Serie", "Categoria", "Detalles"};
             modelo = new DefaultTableModel(null, titulos);
             
             Connection cn = CConexion.getConnection();
-            CallableStatement cst = cn.prepareCall("{call MostrarArmas()}");
+            CallableStatement cst = cn.prepareCall("{call MostrarEquipo()}");
             ResultSet rs = cst.executeQuery();
 
             while (rs.next()) {
