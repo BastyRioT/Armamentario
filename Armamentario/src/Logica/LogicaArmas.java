@@ -7,14 +7,11 @@ package Logica;
 import Conexion.CConexion;
 import java.sql.CallableStatement;
 import com.mysql.jdbc.Connection;
+import java.sql.PreparedStatement;
 import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-
-
-
-
+import javax.swing.JOptionPane;
 /**
  *
  * @author basty
@@ -67,5 +64,68 @@ public class LogicaArmas {
             e.printStackTrace();
         }
         return modelo;
+    }
+     
+     public boolean registrarArma(String numeroSerie, String categoria, String detalles) {
+        try {
+            
+            if (existeNumeroSerie(numeroSerie)) {
+                JOptionPane.showMessageDialog(null, "Esta arma ya esta registrada.", "Error", JOptionPane.WARNING_MESSAGE);
+                return false;
+            }
+            
+            Connection cn = CConexion.getConnection();
+            CallableStatement cst = cn.prepareCall("{call RegistrarArma(?, ?, ?)}");
+            cst.setString(1, numeroSerie);
+            cst.setString(2, categoria);
+            cst.setString(3, detalles);
+
+            int filasAfectadas = cst.executeUpdate();
+            
+            // Si se afectó al menos una fila, se considera exitoso
+            return filasAfectadas > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false; // En caso de error, retornamos false
+        }
+    }
+     
+     private boolean existeNumeroSerie(String numeroSerie) {
+    try {
+        Connection cn = CConexion.getConnection();
+        PreparedStatement pst = cn.prepareStatement("SELECT COUNT(*) FROM armamento WHERE numeroSerie = ?");
+        pst.setString(1, numeroSerie);
+
+        ResultSet rs = pst.executeQuery();
+        rs.next();
+
+        // Si el resultado es mayor a cero, el número de serie ya existe
+        return rs.getInt(1) > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al verificar el número de serie.", "Error", JOptionPane.ERROR_MESSAGE);
+            return false; // En caso de error, retornamos false
+        }
+    }
+     
+     public boolean editarArma(String numeroSerie, String nuevaCategoria, String nuevosDetalles) {
+    try {
+        Connection cn = CConexion.getConnection();
+        CallableStatement cst = cn.prepareCall("{call EditarArma(?, ?, ?)}");
+        cst.setString(1, numeroSerie);
+        cst.setString(2, nuevaCategoria);
+        cst.setString(3, nuevosDetalles);
+
+        int filasAfectadas = cst.executeUpdate();
+
+        // Si se afectó al menos una fila, se considera exitoso
+        return filasAfectadas > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false; // En caso de error, retornamos false
+        }
     }
 }

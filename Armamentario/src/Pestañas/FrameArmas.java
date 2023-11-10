@@ -8,7 +8,6 @@ import Armamento.EditarA;
 import Armamento.RegistroA;
 import Logica.LogicaArmas;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -21,10 +20,8 @@ public class FrameArmas extends javax.swing.JFrame {
     /**
      * Creates new form FrameArmas
      */
-    private LogicaArmas logica;
-    public FrameArmas() {
-        initComponents();  
-        logica = new LogicaArmas();
+   public FrameArmas() {
+        initComponents();
         mostrarArmamento();
     }
     
@@ -40,6 +37,13 @@ public class FrameArmas extends javax.swing.JFrame {
     public void mostrarArmamento() {
         LogicaArmas logica = new LogicaArmas();
         DefaultTableModel modelo = logica.mostrarArmas();
+        tblArmas.setModel(modelo);
+    }
+    
+    private void realizarBusqueda() {
+        LogicaArmas logica = new LogicaArmas();
+        String terminoBusqueda = txtBuscar.getText();
+        DefaultTableModel modelo = logica.buscarArma(terminoBusqueda);
         tblArmas.setModel(modelo);
     }
     /**
@@ -278,17 +282,33 @@ public class FrameArmas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar1ActionPerformed
-        //
+        // Obtener la fila seleccionada
+    int filaSeleccionada = tblArmas.getSelectedRow();
+
+    // Verificar si se seleccionó alguna fila
+    if (filaSeleccionada != -1) {
+        // Obtener los datos de la fila seleccionada
+        String numeroSerie = tblArmas.getValueAt(filaSeleccionada, 0).toString();
+        String categoria = tblArmas.getValueAt(filaSeleccionada, 1).toString();
+        String detalle = tblArmas.getValueAt(filaSeleccionada, 2).toString();
+
+        // Crear una instancia de EditarA y pasar los datos
+        EditarA ventanaEditar = new EditarA(numeroSerie, categoria, detalle);
+
+            ventanaEditar.setLocationRelativeTo(null);
+            ventanaEditar.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor, selecciona un arma para editar.", "Error", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnEditar1ActionPerformed
 
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
-        //
+
+        realizarBusqueda();
     }//GEN-LAST:event_txtBuscarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        String terminoBusqueda = txtBuscar.getText();
-        DefaultTableModel modelo = logica.buscarArma(terminoBusqueda);
-        tblArmas.setModel(modelo);
+        realizarBusqueda();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**

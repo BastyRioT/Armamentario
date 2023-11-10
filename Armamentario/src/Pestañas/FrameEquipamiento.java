@@ -4,12 +4,8 @@
  */
 package Pestañas;
 
-import Armamento.EditarA;
-import Armamento.RegistroA;
-import Logica.LogicaArmas;
 import Logica.LogicaEquipo;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,10 +17,8 @@ public class FrameEquipamiento extends javax.swing.JFrame {
     /**
      * Creates new form FrameArmas
      */
-    private LogicaEquipo logica;
     public FrameEquipamiento() {
         initComponents();
-        logica = new LogicaEquipo();
         mostrarEquipamiento();
     }
     
@@ -280,11 +274,11 @@ public class FrameEquipamiento extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
-        
+        //
     }//GEN-LAST:event_txtBuscarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+        LogicaEquipo logica = new LogicaEquipo();
         String terminoBusqueda = txtBuscar.getText();
         DefaultTableModel modelo = logica.buscarEquipamiento(terminoBusqueda);
         tblEquipo.setModel(modelo);
