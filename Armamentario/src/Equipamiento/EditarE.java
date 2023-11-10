@@ -2,25 +2,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Armamento;
+package Equipamiento;
 
-import Logica.LogicaArmas;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author basty
  */
-public class EditarA extends javax.swing.JFrame {
+public class EditarE extends javax.swing.JFrame {
 
     /**
      * Creates new form RegistroA
      */
-    public EditarA(String numeroSerie, String categoria, String detalles) {
-        initComponents();
-        txtNumero.setText(numeroSerie);
-        cmbCategoria.setSelectedItem(categoria);
-        txtDetalle.setText(detalles);
+    public EditarE() {
     }
 
 
@@ -43,7 +37,7 @@ public class EditarA extends javax.swing.JFrame {
         lbDetalle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Editar Arma");
+        setTitle("Editar Equipo");
 
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -58,7 +52,7 @@ public class EditarA extends javax.swing.JFrame {
             }
         });
 
-        cmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pistola", "Subfusil", "Escopeta", "Rifle" }));
+        cmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chaleco", "Casco", "Linterna", " " }));
         cmbCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbCategoriaActionPerformed(evt);
@@ -133,19 +127,7 @@ public class EditarA extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNumeroActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        String numeroSerie = txtNumero.getText();
-        String nuevaCategoria = cmbCategoria.getSelectedItem().toString();
-        String nuevosDetalles = txtDetalle.getText();
-
-        LogicaArmas logica = new LogicaArmas();
-        boolean exito = logica.editarArma(numeroSerie, nuevaCategoria, nuevosDetalles);
-
-        if (exito) {
-            JOptionPane.showMessageDialog(this, "Edición exitosa.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "Error al editar el arma.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**

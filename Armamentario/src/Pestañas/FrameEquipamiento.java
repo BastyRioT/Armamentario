@@ -4,6 +4,7 @@
  */
 package Pestañas;
 
+import Equipamiento.RegistroE;
 import Logica.LogicaEquipo;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -266,7 +267,9 @@ public class FrameEquipamiento extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        //
+        RegistroE objetoRegistro = new RegistroE();
+        objetoRegistro.setLocationRelativeTo(null);
+        objetoRegistro.setVisible(true);
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed

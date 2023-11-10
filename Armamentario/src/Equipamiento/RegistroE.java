@@ -2,27 +2,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Armamento;
+package Equipamiento;
 
-import Logica.LogicaArmas;
-import javax.swing.JOptionPane;
+
 
 /**
  *
  * @author basty
  */
-public class EditarA extends javax.swing.JFrame {
+public class RegistroE extends javax.swing.JFrame {
 
     /**
      * Creates new form RegistroA
      */
-    public EditarA(String numeroSerie, String categoria, String detalles) {
+    public RegistroE() {
         initComponents();
-        txtNumero.setText(numeroSerie);
-        cmbCategoria.setSelectedItem(categoria);
-        txtDetalle.setText(detalles);
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,7 +29,7 @@ public class EditarA extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlFondo = new javax.swing.JPanel();
-        btnGuardar = new javax.swing.JButton();
+        btnRegistrar = new javax.swing.JButton();
         txtNumero = new javax.swing.JTextField();
         txtDetalle = new javax.swing.JTextField();
         cmbCategoria = new javax.swing.JComboBox<>();
@@ -43,12 +38,12 @@ public class EditarA extends javax.swing.JFrame {
         lbDetalle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Editar Arma");
+        setTitle("Registrar Equipo");
 
-        btnGuardar.setText("Guardar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
+                btnRegistrarActionPerformed(evt);
             }
         });
 
@@ -58,7 +53,7 @@ public class EditarA extends javax.swing.JFrame {
             }
         });
 
-        cmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pistola", "Subfusil", "Escopeta", "Rifle" }));
+        cmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chaleco", "Casco", "Linterna" }));
         cmbCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbCategoriaActionPerformed(evt);
@@ -86,9 +81,9 @@ public class EditarA extends javax.swing.JFrame {
                     .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFondoLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnGuardar)
+                        .addComponent(btnRegistrar)
                         .addGap(78, 78, 78)))
-                .addGap(182, 182, 182))
+                .addContainerGap(182, Short.MAX_VALUE))
         );
         pnlFondoLayout.setVerticalGroup(
             pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,13 +95,13 @@ public class EditarA extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbCategoria)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbDetalle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnGuardar)
+                .addComponent(btnRegistrar)
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
@@ -132,29 +127,16 @@ public class EditarA extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroActionPerformed
 
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        String numeroSerie = txtNumero.getText();
-        String nuevaCategoria = cmbCategoria.getSelectedItem().toString();
-        String nuevosDetalles = txtDetalle.getText();
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
 
-        LogicaArmas logica = new LogicaArmas();
-        boolean exito = logica.editarArma(numeroSerie, nuevaCategoria, nuevosDetalles);
-
-        if (exito) {
-            JOptionPane.showMessageDialog(this, "Edición exitosa.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "Error al editar el arma.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_btnGuardarActionPerformed
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnRegistrar;
     private javax.swing.JComboBox<String> cmbCategoria;
     private javax.swing.JLabel lbCategoria;
     private javax.swing.JLabel lbDetalle;
