@@ -22,7 +22,12 @@ public class FrameEquipamiento extends javax.swing.JFrame {
         initComponents();
         mostrarEquipamiento();
     }
-    
+    private boolean darDeBajaEquipamiento(String numeroSerie) {
+    // Llamar a tu lógica para dar de baja en la base de datos
+         LogicaEquipo logica = new LogicaEquipo();
+    // Retorna true si la operación fue exitosa, false si hubo un error
+        return logica.darDeBajaEquipamiento(numeroSerie);
+}
     public void cerrarSesion() {
         JOptionPane.showMessageDialog(null, "Sesión cerrada.");
         this.dispose();
@@ -36,6 +41,12 @@ public class FrameEquipamiento extends javax.swing.JFrame {
         DefaultTableModel modelo = logica.mostrarEquipo();
         tblEquipo.setModel(modelo);
     }
+    private void realizarBusqueda() {
+        LogicaEquipo logica = new LogicaEquipo();
+        String terminoBusqueda = txtBuscar.getText();
+        DefaultTableModel modelo = logica.buscarEquipamiento(terminoBusqueda);
+        tblEquipo.setModel(modelo);
+    }    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,6 +103,11 @@ public class FrameEquipamiento extends javax.swing.JFrame {
         btnEliminar.setBackground(new java.awt.Color(40, 114, 51));
         btnEliminar.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
         btnEliminar.setText("Dar de Baja");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnEditar.setBackground(new java.awt.Color(40, 114, 51));
         btnEditar.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
@@ -277,15 +293,37 @@ public class FrameEquipamiento extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
-        //
+        realizarBusqueda();
     }//GEN-LAST:event_txtBuscarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        LogicaEquipo logica = new LogicaEquipo();
-        String terminoBusqueda = txtBuscar.getText();
-        DefaultTableModel modelo = logica.buscarEquipamiento(terminoBusqueda);
-        tblEquipo.setModel(modelo);
+        realizarBusqueda();
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+    // TODO add your handling code here:
+        int filaSeleccionada = tblEquipo.getSelectedRow();
+        // Verificar si se seleccionó alguna fila
+        if (filaSeleccionada != -1) {
+            // Obtener los datos de la fila seleccionada
+            String numeroSerie = tblEquipo.getValueAt(filaSeleccionada, 0).toString();
+            String categoria = tblEquipo.getValueAt(filaSeleccionada, 1).toString();
+            String detalle = tblEquipo.getValueAt(filaSeleccionada, 2).toString();
+            // Llamar al método en la lógica para dar de baja
+            if (darDeBajaEquipamiento(numeroSerie)) {
+                // Eliminar la fila del modelo de la tabla
+                DefaultTableModel modelo = (DefaultTableModel) tblEquipo.getModel();
+                modelo.removeRow(filaSeleccionada);
+                JOptionPane.showMessageDialog(null, "Arma dada de baja exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al dar de baja el arma.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor, selecciona un arma para dar de baja.", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+       
+    
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments

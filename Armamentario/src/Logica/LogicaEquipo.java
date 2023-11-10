@@ -64,4 +64,20 @@ public class LogicaEquipo {
         }
         return modelo;
     }
+    public boolean darDeBajaEquipamiento(String numeroSerie) {
+    try {
+        // Lógica para dar de baja en la base de datos (puedes utilizar un procedimiento almacenado o una consulta SQL DELETE)
+        Connection cn = CConexion.getConnection();
+        CallableStatement cst = cn.prepareCall("{call DarDeBajaEquipamiento(?)}");
+        cst.setString(1, numeroSerie);
+
+        int filasAfectadas = cst.executeUpdate();
+
+        return filasAfectadas > 0;
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false; // En caso de error, retornamos false
+        }
+    }
 }

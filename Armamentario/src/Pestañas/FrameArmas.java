@@ -39,6 +39,12 @@ public class FrameArmas extends javax.swing.JFrame {
         DefaultTableModel modelo = logica.mostrarArmas();
         tblArmas.setModel(modelo);
     }
+    private boolean darDeBajaArma(String numeroSerie) {
+    // Llamar a tu lógica para dar de baja en la base de datos
+        LogicaArmas logica = new LogicaArmas();
+    // Retorna true si la operación fue exitosa, false si hubo un error
+        return logica.darDeBajaArma(numeroSerie);
+}
     
     private void realizarBusqueda() {
         LogicaArmas logica = new LogicaArmas();
@@ -60,7 +66,7 @@ public class FrameArmas extends javax.swing.JFrame {
         pnlFondo = new javax.swing.JPanel();
         pnlArmas = new javax.swing.JPanel();
         btnRegistrar = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
+        btnDarDeBaja = new javax.swing.JButton();
         btnEditar1 = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
         pnlsTabla = new javax.swing.JScrollPane();
@@ -99,9 +105,14 @@ public class FrameArmas extends javax.swing.JFrame {
             }
         });
 
-        btnEditar.setBackground(new java.awt.Color(40, 114, 51));
-        btnEditar.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
-        btnEditar.setText("Dar de Baja");
+        btnDarDeBaja.setBackground(new java.awt.Color(40, 114, 51));
+        btnDarDeBaja.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        btnDarDeBaja.setText("Dar de Baja");
+        btnDarDeBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDarDeBajaActionPerformed(evt);
+            }
+        });
 
         btnEditar1.setBackground(new java.awt.Color(40, 114, 51));
         btnEditar1.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
@@ -130,7 +141,7 @@ public class FrameArmas extends javax.swing.JFrame {
                 .addGroup(pnlArmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnEditar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRegistrar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                    .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnDarDeBaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlArmasLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -145,7 +156,7 @@ public class FrameArmas extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnEditar1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnDarDeBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnVolver)
                 .addContainerGap())
@@ -311,6 +322,30 @@ public class FrameArmas extends javax.swing.JFrame {
         realizarBusqueda();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void btnDarDeBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBajaActionPerformed
+        // TODO add your handling code here:
+        int filaSeleccionada = tblArmas.getSelectedRow();
+        // Verificar si se seleccionó alguna fila
+        if (filaSeleccionada != -1) {
+            // Obtener los datos de la fila seleccionada
+            String numeroSerie = tblArmas.getValueAt(filaSeleccionada, 0).toString();
+            String categoria = tblArmas.getValueAt(filaSeleccionada, 1).toString();
+            String detalle = tblArmas.getValueAt(filaSeleccionada, 2).toString();
+            // Llamar al método en la lógica para dar de baja
+            if (darDeBajaArma(numeroSerie)) {
+                // Eliminar la fila del modelo de la tabla
+                DefaultTableModel modelo = (DefaultTableModel) tblArmas.getModel();
+                modelo.removeRow(filaSeleccionada);
+                JOptionPane.showMessageDialog(null, "Arma dada de baja exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al dar de baja el arma.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor, selecciona un arma para dar de baja.", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+       
+    }//GEN-LAST:event_btnDarDeBajaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -351,7 +386,7 @@ public class FrameArmas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnDarDeBaja;
     private javax.swing.JButton btnEditar1;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnVolver;

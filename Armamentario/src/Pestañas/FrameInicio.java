@@ -86,10 +86,8 @@ public class FrameInicio extends javax.swing.JFrame {
         btnArmas = new javax.swing.JButton();
         btnEquipamiento = new javax.swing.JButton();
         btnHistorial = new javax.swing.JButton();
-        lblU = new javax.swing.JLabel();
         lblH = new javax.swing.JLabel();
         lblF = new javax.swing.JLabel();
-        lblUsuario = new javax.swing.JLabel();
         lblHora = new javax.swing.JLabel();
         lblFecha = new javax.swing.JLabel();
         mnbMenu = new javax.swing.JMenuBar();
@@ -140,13 +138,9 @@ public class FrameInicio extends javax.swing.JFrame {
         btnHistorial.setBackground(new java.awt.Color(40, 114, 51));
         btnHistorial.setText("Historial de Cambios");
 
-        lblU.setText("Usuario:");
-
         lblH.setText("Hora:");
 
         lblF.setText("Fecha:");
-
-        lblUsuario.setText("jLabel4");
 
         lblHora.setText("jLabel4");
 
@@ -162,12 +156,10 @@ public class FrameInicio extends javax.swing.JFrame {
                         .addGroup(pnlInicioLayout.createSequentialGroup()
                             .addContainerGap()
                             .addGroup(pnlInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblU)
                                 .addComponent(lblF)
                                 .addComponent(lblH))
-                            .addGap(18, 18, 18)
+                            .addGap(27, 27, 27)
                             .addGroup(pnlInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                .addComponent(lblUsuario)
                                 .addComponent(lblHora)
                                 .addComponent(lblFecha)))
                         .addGroup(pnlInicioLayout.createSequentialGroup()
@@ -187,11 +179,7 @@ public class FrameInicio extends javax.swing.JFrame {
                 .addComponent(btnEquipamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
-                .addGroup(pnlInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblU)
-                    .addComponent(lblUsuario))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblH)
                     .addComponent(lblHora))
@@ -241,9 +229,9 @@ public class FrameInicio extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 22, Short.MAX_VALUE)
                         .addComponent(imgCab)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 23, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -318,8 +306,6 @@ public class FrameInicio extends javax.swing.JFrame {
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblH;
     private javax.swing.JLabel lblHora;
-    private javax.swing.JLabel lblU;
-    private javax.swing.JLabel lblUsuario;
     private javax.swing.JMenu menuAdmin;
     private javax.swing.JMenu menuOpciones;
     private javax.swing.JMenuBar mnbMenu;
