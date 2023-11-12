@@ -42,22 +42,26 @@ public class Login extends javax.swing.JFrame {
         txtContraseña = new javax.swing.JPasswordField();
         txtUsuario = new javax.swing.JTextField();
         btnIngresar = new javax.swing.JButton();
+        lbLogin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inicio Sesión");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setPreferredSize(new java.awt.Dimension(900, 500));
 
         pnlFondo.setToolTipText("");
         pnlFondo.setName(""); // NOI18N
         pnlFondo.setPreferredSize(new java.awt.Dimension(900, 500));
+        pnlFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlCredenciales.setBorder(javax.swing.BorderFactory.createTitledBorder("Credenciales del Usuario"));
+        pnlCredenciales.setBackground(new java.awt.Color(255, 255, 255));
 
         lbUsuario.setText("Usuario");
 
         lbContraseña.setText("Contraseña");
 
+        txtContraseña.setSelectionColor(new java.awt.Color(0, 204, 153));
+
+        btnIngresar.setBackground(new java.awt.Color(0, 102, 51));
         btnIngresar.setText("Ingresar");
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,19 +74,19 @@ public class Login extends javax.swing.JFrame {
         pnlCredencialesLayout.setHorizontalGroup(
             pnlCredencialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCredencialesLayout.createSequentialGroup()
-                .addContainerGap(93, Short.MAX_VALUE)
+                .addContainerGap(98, Short.MAX_VALUE)
                 .addGroup(pnlCredencialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(lbUsuario)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbContraseña)
                     .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnIngresar))
-                .addGap(97, 97, 97))
+                .addGap(92, 92, 92))
         );
         pnlCredencialesLayout.setVerticalGroup(
             pnlCredencialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCredencialesLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(18, 18, 18)
                 .addComponent(lbUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -92,27 +96,14 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(btnIngresar)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout pnlFondoLayout = new javax.swing.GroupLayout(pnlFondo);
-        pnlFondo.setLayout(pnlFondoLayout);
-        pnlFondoLayout.setHorizontalGroup(
-            pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlFondoLayout.createSequentialGroup()
-                .addContainerGap(270, Short.MAX_VALUE)
-                .addComponent(pnlCredenciales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(270, Short.MAX_VALUE))
-        );
-        pnlFondoLayout.setVerticalGroup(
-            pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlFondoLayout.createSequentialGroup()
-                .addContainerGap(109, Short.MAX_VALUE)
-                .addComponent(pnlCredenciales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(109, Short.MAX_VALUE))
-        );
-
+        pnlFondo.add(pnlCredenciales, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, -1, 200));
         pnlCredenciales.getAccessibleContext().setAccessibleDescription("");
+
+        lbLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Login (2).png"))); // NOI18N
+        pnlFondo.add(lbLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,7 +113,7 @@ public class Login extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
+            .addComponent(pnlFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -133,14 +124,14 @@ public class Login extends javax.swing.JFrame {
             // Obtener las credenciales del usuario desde los campos de texto u otros componentes
             String nombreUsuario = jTextFieldNombreUsuario.getText();
             String contrasena = new String(jPasswordFieldContrasena.getPassword());
-            
+
             // Instancia de la clase CLogin para realizar la autenticación
             Conexion.CLogin objetoLogin = new Conexion.CLogin();
-            
+
             // Intentar autenticar al usuario
             if (objetoLogin.validarUsuario(txtUsuario, txtContraseña)){
                 dispose();
-        
+
                 // Abrir el FrameInicio
                 FrameInicio objetoInicio = new FrameInicio();
                 objetoInicio.setLocationRelativeTo(null);
@@ -195,6 +186,7 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresar;
     private javax.swing.JLabel lbContraseña;
+    private javax.swing.JLabel lbLogin;
     private javax.swing.JLabel lbUsuario;
     private javax.swing.JPanel pnlCredenciales;
     private javax.swing.JPanel pnlFondo;

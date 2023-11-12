@@ -64,15 +64,15 @@ public class FrameArmas extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         pnlFondo = new javax.swing.JPanel();
-        pnlArmas = new javax.swing.JPanel();
-        btnRegistrar = new javax.swing.JButton();
-        btnDarDeBaja = new javax.swing.JButton();
-        btnEditar1 = new javax.swing.JButton();
-        btnVolver = new javax.swing.JButton();
         pnlsTabla = new javax.swing.JScrollPane();
         tblArmas = new javax.swing.JTable();
         txtBuscar = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
+        btnRegistrar = new javax.swing.JButton();
+        btnEditar1 = new javax.swing.JButton();
+        btnDarDeBaja = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         mnbMenu = new javax.swing.JMenuBar();
         menuOpciones = new javax.swing.JMenu();
         itemLogout = new javax.swing.JMenuItem();
@@ -94,73 +94,9 @@ public class FrameArmas extends javax.swing.JFrame {
         setTitle("Armamento");
         setResizable(false);
 
-        pnlArmas.setBorder(javax.swing.BorderFactory.createTitledBorder("Armamento"));
-
-        btnRegistrar.setBackground(new java.awt.Color(40, 114, 51));
-        btnRegistrar.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
-        btnRegistrar.setText("Registrar Arma");
-        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarActionPerformed(evt);
-            }
-        });
-
-        btnDarDeBaja.setBackground(new java.awt.Color(40, 114, 51));
-        btnDarDeBaja.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
-        btnDarDeBaja.setText("Dar de Baja");
-        btnDarDeBaja.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDarDeBajaActionPerformed(evt);
-            }
-        });
-
-        btnEditar1.setBackground(new java.awt.Color(40, 114, 51));
-        btnEditar1.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
-        btnEditar1.setText("Editar Arma");
-        btnEditar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditar1ActionPerformed(evt);
-            }
-        });
-
-        btnVolver.setBackground(new java.awt.Color(40, 114, 51));
-        btnVolver.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        btnVolver.setText("Volver");
-        btnVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolverActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnlArmasLayout = new javax.swing.GroupLayout(pnlArmas);
-        pnlArmas.setLayout(pnlArmasLayout);
-        pnlArmasLayout.setHorizontalGroup(
-            pnlArmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlArmasLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlArmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnEditar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRegistrar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                    .addComponent(btnDarDeBaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlArmasLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVolver)
-                .addContainerGap())
-        );
-        pnlArmasLayout.setVerticalGroup(
-            pnlArmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlArmasLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnEditar1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnDarDeBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVolver)
-                .addContainerGap())
-        );
+        pnlFondo.setMinimumSize(new java.awt.Dimension(900, 500));
+        pnlFondo.setPreferredSize(new java.awt.Dimension(900, 500));
+        pnlFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblArmas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -201,11 +137,14 @@ public class FrameArmas extends javax.swing.JFrame {
             tblArmas.getColumnModel().getColumn(2).setResizable(false);
         }
 
+        pnlFondo.add(pnlsTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 600, 370));
+
         txtBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBuscarActionPerformed(evt);
             }
         });
+        pnlFondo.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 190, -1));
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -213,39 +152,50 @@ public class FrameArmas extends javax.swing.JFrame {
                 btnBuscarActionPerformed(evt);
             }
         });
+        pnlFondo.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, -1, -1));
 
-        javax.swing.GroupLayout pnlFondoLayout = new javax.swing.GroupLayout(pnlFondo);
-        pnlFondo.setLayout(pnlFondoLayout);
-        pnlFondoLayout.setHorizontalGroup(
-            pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlFondoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnlArmas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlFondoLayout.createSequentialGroup()
-                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnBuscar)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(pnlsTabla, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        pnlFondoLayout.setVerticalGroup(
-            pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFondoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pnlArmas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pnlFondoLayout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBuscar))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pnlsTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
+        btnRegistrar.setBackground(new java.awt.Color(40, 114, 51));
+        btnRegistrar.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        btnRegistrar.setText("Registrar Arma");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
+        pnlFondo.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 170, 60));
+
+        btnEditar1.setBackground(new java.awt.Color(40, 114, 51));
+        btnEditar1.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        btnEditar1.setText("Editar Arma");
+        btnEditar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditar1ActionPerformed(evt);
+            }
+        });
+        pnlFondo.add(btnEditar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 170, 60));
+
+        btnDarDeBaja.setBackground(new java.awt.Color(40, 114, 51));
+        btnDarDeBaja.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        btnDarDeBaja.setText("Dar de Baja");
+        btnDarDeBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDarDeBajaActionPerformed(evt);
+            }
+        });
+        pnlFondo.add(btnDarDeBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 170, 60));
+
+        btnVolver.setBackground(new java.awt.Color(40, 114, 51));
+        btnVolver.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+        pnlFondo.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo2.png"))); // NOI18N
+        pnlFondo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         menuOpciones.setText("Opciones");
 
@@ -279,40 +229,6 @@ public class FrameArmas extends javax.swing.JFrame {
         cerrarSesion();
     }//GEN-LAST:event_itemLogoutActionPerformed
 
-    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        FrameInicio objetoInicio = new FrameInicio();
-        objetoInicio.setLocationRelativeTo(null);
-        objetoInicio.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnVolverActionPerformed
-
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        RegistroA objetoRegistro = new RegistroA();
-        objetoRegistro.setLocationRelativeTo(null);
-        objetoRegistro.setVisible(true);
-    }//GEN-LAST:event_btnRegistrarActionPerformed
-
-    private void btnEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar1ActionPerformed
-        // Obtener la fila seleccionada
-    int filaSeleccionada = tblArmas.getSelectedRow();
-
-    // Verificar si se seleccionó alguna fila
-    if (filaSeleccionada != -1) {
-        // Obtener los datos de la fila seleccionada
-        String numeroSerie = tblArmas.getValueAt(filaSeleccionada, 0).toString();
-        String categoria = tblArmas.getValueAt(filaSeleccionada, 1).toString();
-        String detalle = tblArmas.getValueAt(filaSeleccionada, 2).toString();
-
-        // Crear una instancia de EditarA y pasar los datos
-        EditarA ventanaEditar = new EditarA(numeroSerie, categoria, detalle);
-
-            ventanaEditar.setLocationRelativeTo(null);
-            ventanaEditar.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(this, "Por favor, selecciona un arma para editar.", "Error", JOptionPane.WARNING_MESSAGE);
-        }
-    }//GEN-LAST:event_btnEditar1ActionPerformed
-
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
 
         realizarBusqueda();
@@ -321,6 +237,34 @@ public class FrameArmas extends javax.swing.JFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         realizarBusqueda();
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        FrameInicio objetoInicio = new FrameInicio();
+        objetoInicio.setLocationRelativeTo(null);
+        objetoInicio.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar1ActionPerformed
+        // Obtener la fila seleccionada
+        int filaSeleccionada = tblArmas.getSelectedRow();
+
+        // Verificar si se seleccionó alguna fila
+        if (filaSeleccionada != -1) {
+            // Obtener los datos de la fila seleccionada
+            String numeroSerie = tblArmas.getValueAt(filaSeleccionada, 0).toString();
+            String categoria = tblArmas.getValueAt(filaSeleccionada, 1).toString();
+            String detalle = tblArmas.getValueAt(filaSeleccionada, 2).toString();
+
+            // Crear una instancia de EditarA y pasar los datos
+            EditarA ventanaEditar = new EditarA(numeroSerie, categoria, detalle);
+
+            ventanaEditar.setLocationRelativeTo(null);
+            ventanaEditar.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor, selecciona un arma para editar.", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEditar1ActionPerformed
 
     private void btnDarDeBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBajaActionPerformed
         // TODO add your handling code here:
@@ -343,8 +287,14 @@ public class FrameArmas extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Por favor, selecciona un arma para dar de baja.", "Error", JOptionPane.WARNING_MESSAGE);
         }
-       
+
     }//GEN-LAST:event_btnDarDeBajaActionPerformed
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        RegistroA objetoRegistro = new RegistroA();
+        objetoRegistro.setLocationRelativeTo(null);
+        objetoRegistro.setVisible(true);
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -391,11 +341,11 @@ public class FrameArmas extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnVolver;
     private javax.swing.JMenuItem itemLogout;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JMenu menuOpciones;
     private javax.swing.JMenuBar mnbMenu;
-    private javax.swing.JPanel pnlArmas;
     private javax.swing.JPanel pnlFondo;
     private javax.swing.JScrollPane pnlsTabla;
     private javax.swing.JTable tblArmas;

@@ -36,9 +36,12 @@ public class RegistroE extends javax.swing.JFrame {
         lbNSerie = new javax.swing.JLabel();
         lbCategoria = new javax.swing.JLabel();
         lbDetalle = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registrar Equipo");
+
+        pnlFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnRegistrar.setText("Registrar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -46,12 +49,15 @@ public class RegistroE extends javax.swing.JFrame {
                 btnRegistrarActionPerformed(evt);
             }
         });
+        pnlFondo.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 233, -1, 30));
 
         txtNumero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNumeroActionPerformed(evt);
             }
         });
+        pnlFondo.add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 240, -1));
+        pnlFondo.add(txtDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 240, 40));
 
         cmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chaleco", "Casco", "Linterna" }));
         cmbCategoria.addActionListener(new java.awt.event.ActionListener() {
@@ -59,51 +65,19 @@ public class RegistroE extends javax.swing.JFrame {
                 cmbCategoriaActionPerformed(evt);
             }
         });
+        pnlFondo.add(cmbCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 240, -1));
 
         lbNSerie.setText("N° De Serie");
+        pnlFondo.add(lbNSerie, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, -1, -1));
 
         lbCategoria.setText("Categoria");
+        pnlFondo.add(lbCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, -1, -1));
 
         lbDetalle.setText("Detalles");
+        pnlFondo.add(lbDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, -1, -1));
 
-        javax.swing.GroupLayout pnlFondoLayout = new javax.swing.GroupLayout(pnlFondo);
-        pnlFondo.setLayout(pnlFondoLayout);
-        pnlFondoLayout.setHorizontalGroup(
-            pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFondoLayout.createSequentialGroup()
-                .addContainerGap(185, Short.MAX_VALUE)
-                .addGroup(pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbCategoria)
-                    .addComponent(lbDetalle)
-                    .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbNSerie)
-                    .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFondoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnRegistrar)
-                        .addGap(78, 78, 78)))
-                .addContainerGap(182, Short.MAX_VALUE))
-        );
-        pnlFondoLayout.setVerticalGroup(
-            pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlFondoLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(lbNSerie)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbCategoria)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbDetalle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnRegistrar)
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Registrar.png"))); // NOI18N
+        pnlFondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,6 +112,7 @@ public class RegistroE extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JComboBox<String> cmbCategoria;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbCategoria;
     private javax.swing.JLabel lbDetalle;
     private javax.swing.JLabel lbNSerie;
