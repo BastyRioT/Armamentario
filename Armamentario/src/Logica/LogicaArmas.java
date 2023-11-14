@@ -81,13 +81,12 @@ public class LogicaArmas {
             cst.setString(3, detalles);
 
             int filasAfectadas = cst.executeUpdate();
-            
-            // Si se afectó al menos una fila, se considera exitoso
+
             return filasAfectadas > 0;
 
         } catch (SQLException e) {
             e.printStackTrace();
-            return false; // En caso de error, retornamos false
+            return false;
         }
     }
      
@@ -100,13 +99,12 @@ public class LogicaArmas {
         ResultSet rs = pst.executeQuery();
         rs.next();
 
-        // Si el resultado es mayor a cero, el número de serie ya existe
         return rs.getInt(1) > 0;
 
         } catch (SQLException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error al verificar el número de serie.", "Error", JOptionPane.ERROR_MESSAGE);
-            return false; // En caso de error, retornamos false
+            return false;
         }
     }
      
@@ -120,17 +118,15 @@ public class LogicaArmas {
 
         int filasAfectadas = cst.executeUpdate();
 
-        // Si se afectó al menos una fila, se considera exitoso
         return filasAfectadas > 0;
 
         } catch (SQLException e) {
             e.printStackTrace();
-            return false; // En caso de error, retornamos false
+            return false;
         }
     }
     public boolean darDeBajaArma(String numeroSerie) {
     try {
-        // Lógica para dar de baja en la base de datos (puedes utilizar un procedimiento almacenado o una consulta SQL DELETE)
         Connection cn = CConexion.getConnection();
         CallableStatement cst = cn.prepareCall("{call DarDeBajaArma(?)}");
         cst.setString(1, numeroSerie);
@@ -141,7 +137,7 @@ public class LogicaArmas {
 
     } catch (SQLException e) {
         e.printStackTrace();
-        return false; // En caso de error, retornamos false
+        return false;
     }
 }
 }

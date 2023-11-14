@@ -7,6 +7,9 @@ package Pestañas;
 import Equipamiento.EditarE;
 import Equipamiento.RegistroE;
 import Logica.LogicaEquipo;
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,13 +25,17 @@ public class FrameEquipamiento extends javax.swing.JFrame {
     public FrameEquipamiento() {
         initComponents();
         mostrarEquipamiento();
+        
+        ImageIcon icLogout = new ImageIcon(getClass().getResource("/Imagenes/logout.png"));
+        Icon iconoLog = new ImageIcon(icLogout.getImage().getScaledInstance(20,20, Image.SCALE_SMOOTH));
+        itemLogout.setIcon(iconoLog);
     }
+    
     private boolean darDeBajaEquipamiento(String numeroSerie) {
-    // Llamar a tu lógica para dar de baja en la base de datos
          LogicaEquipo logica = new LogicaEquipo();
-    // Retorna true si la operación fue exitosa, false si hubo un error
         return logica.darDeBajaEquipamiento(numeroSerie);
-}
+    }
+    
     public void cerrarSesion() {
         JOptionPane.showMessageDialog(null, "Sesión cerrada.");
         this.dispose();
@@ -244,17 +251,14 @@ public class FrameEquipamiento extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // Obtener la fila seleccionada
+        
         int filaSeleccionada = tblEquipo.getSelectedRow();
 
-        // Verificar si se seleccionó alguna fila
         if (filaSeleccionada != -1) {
-            // Obtener los datos de la fila seleccionada
             String numeroSerie = tblEquipo.getValueAt(filaSeleccionada, 0).toString();
             String categoria = tblEquipo.getValueAt(filaSeleccionada, 1).toString();
             String detalle = tblEquipo.getValueAt(filaSeleccionada, 2).toString();
 
-            // Crear una instancia de EditarA y pasar los datos
             EditarE ventanaEditar = new EditarE(this, numeroSerie, categoria, detalle);
 
             ventanaEditar.setLocationRelativeTo(null);
@@ -275,15 +279,11 @@ public class FrameEquipamiento extends javax.swing.JFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
     // TODO add your handling code here:
         int filaSeleccionada = tblEquipo.getSelectedRow();
-        // Verificar si se seleccionó alguna fila
         if (filaSeleccionada != -1) {
-            // Obtener los datos de la fila seleccionada
             String numeroSerie = tblEquipo.getValueAt(filaSeleccionada, 0).toString();
             String categoria = tblEquipo.getValueAt(filaSeleccionada, 1).toString();
             String detalle = tblEquipo.getValueAt(filaSeleccionada, 2).toString();
-            // Llamar al método en la lógica para dar de baja
             if (darDeBajaEquipamiento(numeroSerie)) {
-                // Eliminar la fila del modelo de la tabla
                 DefaultTableModel modelo = (DefaultTableModel) tblEquipo.getModel();
                 modelo.removeRow(filaSeleccionada);
                 JOptionPane.showMessageDialog(null, "Equipo dado de baja exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);

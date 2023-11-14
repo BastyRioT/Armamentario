@@ -234,9 +234,7 @@ public class FrameAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarUsActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        Login objetoInicio = new Login();
-        objetoInicio.setLocationRelativeTo(null);
-        objetoInicio.setVisible(true);
+       
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 

@@ -121,7 +121,7 @@ public class Login extends javax.swing.JFrame {
         mnAdmin.setText("Administración");
 
         itemAdmin.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        itemAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        itemAdmin.setForeground(new java.awt.Color(0, 0, 0));
         itemAdmin.setText("Ingresar");
         itemAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,27 +150,19 @@ public class Login extends javax.swing.JFrame {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         try {
-            // Obtener las credenciales del usuario desde los campos de texto u otros componentes
             String nombreUsuario = jTextFieldNombreUsuario.getText();
             String contrasena = new String(jPasswordFieldContrasena.getPassword());
 
-            // Instancia de la clase CLogin para realizar la autenticación
             Conexion.CLogin objetoLogin = new Conexion.CLogin();
 
-            // Intentar autenticar al usuario
             if (objetoLogin.validarUsuario(txtUsuario, txtContraseña)){
                 dispose();
 
-                // Abrir el FrameInicio
                 FrameInicio objetoInicio = new FrameInicio();
                 objetoInicio.setLocationRelativeTo(null);
                 objetoInicio.setVisible(true);
             }
-
-            // Si el usuario se autentica correctamente, realizar acciones de inicio de sesión
-            // No es necesario hacer nada aquí ya que la acción se realiza dentro de validarUsuario
         } catch (Exception e) {
-            // Manejar cualquier excepción que pueda ocurrir durante el proceso de autenticación
             JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Error de autenticación", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnIngresarActionPerformed

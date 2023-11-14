@@ -7,6 +7,9 @@ package Pestañas;
 import Armamento.EditarA;
 import Armamento.RegistroA;
 import Logica.LogicaArmas;
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -23,6 +26,10 @@ public class FrameArmas extends javax.swing.JFrame {
    public FrameArmas() {
         initComponents();
         mostrarArmamento();
+        
+        ImageIcon icLogout = new ImageIcon(getClass().getResource("/Imagenes/logout.png"));
+        Icon iconoLog = new ImageIcon(icLogout.getImage().getScaledInstance(20,20, Image.SCALE_SMOOTH));
+        itemLogout.setIcon(iconoLog);
     }
     
     
@@ -40,9 +47,7 @@ public class FrameArmas extends javax.swing.JFrame {
         tblArmas.setModel(modelo);
     }
     private boolean darDeBajaArma(String numeroSerie) {
-    // Llamar a tu lógica para dar de baja en la base de datos
         LogicaArmas logica = new LogicaArmas();
-    // Retorna true si la operación fue exitosa, false si hubo un error
         return logica.darDeBajaArma(numeroSerie);
 }
     
@@ -253,17 +258,14 @@ public class FrameArmas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar1ActionPerformed
-        // Obtener la fila seleccionada
-        int filaSeleccionada = tblArmas.getSelectedRow();
 
-        // Verificar si se seleccionó alguna fila
+        int filaSeleccionada = tblArmas.getSelectedRow();
+        
         if (filaSeleccionada != -1) {
-            // Obtener los datos de la fila seleccionada
             String numeroSerie = tblArmas.getValueAt(filaSeleccionada, 0).toString();
             String categoria = tblArmas.getValueAt(filaSeleccionada, 1).toString();
             String detalle = tblArmas.getValueAt(filaSeleccionada, 2).toString();
 
-            // Crear una instancia de EditarA y pasar los datos
             EditarA ventanaEditar = new EditarA(this, numeroSerie, categoria, detalle);
 
             ventanaEditar.setLocationRelativeTo(null);
@@ -274,17 +276,14 @@ public class FrameArmas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditar1ActionPerformed
 
     private void btnDarDeBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBajaActionPerformed
-        // TODO add your handling code here:
+
         int filaSeleccionada = tblArmas.getSelectedRow();
-        // Verificar si se seleccionó alguna fila
+        
         if (filaSeleccionada != -1) {
-            // Obtener los datos de la fila seleccionada
             String numeroSerie = tblArmas.getValueAt(filaSeleccionada, 0).toString();
             String categoria = tblArmas.getValueAt(filaSeleccionada, 1).toString();
             String detalle = tblArmas.getValueAt(filaSeleccionada, 2).toString();
-            // Llamar al método en la lógica para dar de baja
             if (darDeBajaArma(numeroSerie)) {
-                // Eliminar la fila del modelo de la tabla
                 DefaultTableModel modelo = (DefaultTableModel) tblArmas.getModel();
                 modelo.removeRow(filaSeleccionada);
                 JOptionPane.showMessageDialog(null, "Arma dada de baja exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);

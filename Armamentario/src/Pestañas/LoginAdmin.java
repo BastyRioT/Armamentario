@@ -85,27 +85,19 @@ public class LoginAdmin extends javax.swing.JFrame {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         try {
-            // Obtener las credenciales del usuario desde los campos de texto u otros componentes
             String nombreUsuario = jTextFieldNombreUsuario.getText();
             String contrasena = new String(jPasswordFieldContrasena.getPassword());
 
-            // Instancia de la clase CLogin para realizar la autenticación
             Conexion.CAdmin objetoLoginA = new Conexion.CAdmin();
 
-            // Intentar autenticar al usuario
             if (objetoLoginA.validarUsuarioAdmin(txtUsuarioAdmin, txtContraseñaAdmin)){
                 dispose();
 
-                // Abrir el FrameInicio
                 FrameAdmin objetoInicio = new FrameAdmin();
                 objetoInicio.setLocationRelativeTo(null);
                 objetoInicio.setVisible(true);
             }
-
-            // Si el usuario se autentica correctamente, realizar acciones de inicio de sesión
-            // No es necesario hacer nada aquí ya que la acción se realiza dentro de validarUsuario
         } catch (Exception e) {
-            // Manejar cualquier excepción que pueda ocurrir durante el proceso de autenticación
             JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Error de autenticación", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
