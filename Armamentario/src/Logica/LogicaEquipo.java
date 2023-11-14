@@ -6,9 +6,11 @@ package Logica;
 
 import Conexion.CConexion;
 import com.mysql.jdbc.Connection;
+import java.sql.PreparedStatement;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -64,6 +66,50 @@ public class LogicaEquipo {
         }
         return modelo;
     }
+    
+    public boolean registrarEquipo(String numeroSerie, String categoria, String detalles) {
+        try {
+            
+            if (existeNumeroSerie(numeroSerie)) {
+                JOptionPane.showMessageDialog(null, "Este equipo ya esta registrado.", "Error", JOptionPane.WARNING_MESSAGE);
+                return false;
+            }
+            
+            Connection cn = CConexion.getConnection();
+            CallableStatement cst = cn.prepareCall("{call RegistrarEquipo(?, ?, ?)}");
+            cst.setString(1, numeroSerie);
+            cst.setString(2, categoria);
+            cst.setString(3, detalles);
+
+            int filasAfectadas = cst.executeUpdate();
+            
+            // Si se afectó al menos una fila, se considera exitoso
+            return filasAfectadas > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false; // En caso de error, retornamos false
+        }
+    }
+    
+    private boolean existeNumeroSerie(String numeroSerie) {
+    try {
+        Connection cn = CConexion.getConnection();
+        PreparedStatement pst = cn.prepareStatement("SELECT COUNT(*) FROM equipamiento WHERE numeroSerie = ?");
+        pst.setString(1, numeroSerie);
+
+        ResultSet rs = pst.executeQuery();
+        rs.next();
+
+        // Si el resultado es mayor a cero, el número de serie ya existe
+        return rs.getInt(1) > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al verificar el número de serie.", "Error", JOptionPane.ERROR_MESSAGE);
+            return false; // En caso de error, retornamos false
+        }
+    }
     public boolean darDeBajaEquipamiento(String numeroSerie) {
     try {
         // Lógica para dar de baja en la base de datos (puedes utilizar un procedimiento almacenado o una consulta SQL DELETE)
@@ -78,6 +124,25 @@ public class LogicaEquipo {
     } catch (SQLException e) {
         e.printStackTrace();
         return false; // En caso de error, retornamos false
+        }
+    }
+    
+    public boolean editarEquipo(String numeroSerie, String nuevaCategoria, String nuevosDetalles) {
+    try {
+        Connection cn = CConexion.getConnection();
+        CallableStatement cst = cn.prepareCall("{call EditarEquipo(?, ?, ?)}");
+        cst.setString(1, numeroSerie);
+        cst.setString(2, nuevaCategoria);
+        cst.setString(3, nuevosDetalles);
+
+        int filasAfectadas = cst.executeUpdate();
+
+        // Si se afectó al menos una fila, se considera exitoso
+        return filasAfectadas > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false; // En caso de error, retornamos false
         }
     }
 }

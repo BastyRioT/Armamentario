@@ -4,6 +4,10 @@
  */
 package Equipamiento;
 
+import Logica.LogicaEquipo;
+import Pestañas.FrameEquipamiento;
+import javax.swing.JOptionPane;
+
 
 
 /**
@@ -12,11 +16,13 @@ package Equipamiento;
  */
 public class RegistroE extends javax.swing.JFrame {
 
+    private FrameEquipamiento frameEquipamiento;
     /**
      * Creates new form RegistroA
      */
-    public RegistroE() {
+    public RegistroE(FrameEquipamiento frameEquipamiento) {
         initComponents();
+        this.frameEquipamiento = frameEquipamiento;
     }
 
     /**
@@ -40,6 +46,7 @@ public class RegistroE extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registrar Equipo");
+        setResizable(false);
 
         pnlFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -102,7 +109,22 @@ public class RegistroE extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNumeroActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-
+        String numeroSerie = txtNumero.getText();
+        String categoria = cmbCategoria.getSelectedItem().toString();
+        String detalles = txtDetalle.getText();
+        
+        if (numeroSerie.isEmpty() || categoria.isEmpty() || detalles.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Todos los campos deben ser completados", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else {
+            LogicaEquipo logica = new LogicaEquipo();
+            boolean registroExitoso = logica.registrarEquipo(numeroSerie, categoria, detalles);
+            if (registroExitoso) {
+            JOptionPane.showMessageDialog(this, "Registro exitoso");
+            frameEquipamiento.mostrarEquipamiento();
+            this.dispose();
+            }
+        }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**

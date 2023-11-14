@@ -4,6 +4,9 @@
  */
 package Pestañas;
 
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 
@@ -23,6 +26,10 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         jTextFieldNombreUsuario = new javax.swing.JTextField();
         jPasswordFieldContrasena = new javax.swing.JPasswordField();
+        
+        ImageIcon icAdmin = new ImageIcon(getClass().getResource("/Imagenes/admin.png"));
+        Icon iconoAdm = new ImageIcon(icAdmin.getImage().getScaledInstance(20,20, Image.SCALE_SMOOTH));
+        itemAdmin.setIcon(iconoAdm);
     }
     
 
@@ -43,10 +50,14 @@ public class Login extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         btnIngresar = new javax.swing.JButton();
         lbLogin = new javax.swing.JLabel();
+        mnbAdmin = new javax.swing.JMenuBar();
+        mnAdmin = new javax.swing.JMenu();
+        itemAdmin = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inicio Sesión");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
 
         pnlFondo.setToolTipText("");
         pnlFondo.setName(""); // NOI18N
@@ -62,6 +73,8 @@ public class Login extends javax.swing.JFrame {
         txtContraseña.setSelectionColor(new java.awt.Color(0, 204, 153));
 
         btnIngresar.setBackground(new java.awt.Color(0, 102, 51));
+        btnIngresar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
         btnIngresar.setText("Ingresar");
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,6 +118,22 @@ public class Login extends javax.swing.JFrame {
         lbLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/login.png"))); // NOI18N
         pnlFondo.add(lbLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        mnAdmin.setText("Administración");
+
+        itemAdmin.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        itemAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        itemAdmin.setText("Ingresar");
+        itemAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemAdminActionPerformed(evt);
+            }
+        });
+        mnAdmin.add(itemAdmin);
+
+        mnbAdmin.add(mnAdmin);
+
+        setJMenuBar(mnbAdmin);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -146,6 +175,12 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
+    private void itemAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAdminActionPerformed
+        LoginAdmin objetoLoginA = new LoginAdmin();
+        objetoLoginA.setLocationRelativeTo(null);
+        objetoLoginA.setVisible(true);
+    }//GEN-LAST:event_itemAdminActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -185,9 +220,12 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresar;
+    private javax.swing.JMenuItem itemAdmin;
     private javax.swing.JLabel lbContraseña;
     private javax.swing.JLabel lbLogin;
     private javax.swing.JLabel lbUsuario;
+    private javax.swing.JMenu mnAdmin;
+    private javax.swing.JMenuBar mnbAdmin;
     private javax.swing.JPanel pnlCredenciales;
     private javax.swing.JPanel pnlFondo;
     private javax.swing.JPasswordField txtContraseña;

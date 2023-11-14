@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Pestañas;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 
 /**
  *
@@ -10,11 +12,16 @@ package Pestañas;
  */
 public class LoginAdmin extends javax.swing.JFrame {
 
+    private javax.swing.JTextField jTextFieldNombreUsuario;
+    private javax.swing.JPasswordField jPasswordFieldContrasena;
+    
     /**
      * Creates new form LoginAdmin
      */
     public LoginAdmin() {
         initComponents();
+        jTextFieldNombreUsuario = new javax.swing.JTextField();
+        jPasswordFieldContrasena = new javax.swing.JPasswordField();
     }
 
     /**
@@ -26,22 +33,82 @@ public class LoginAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(900, 500));
+        pnlFondo = new javax.swing.JPanel();
+        pnlAdmin = new javax.swing.JPanel();
+        txtUsuarioAdmin = new javax.swing.JTextField();
+        lbUsuarioA = new javax.swing.JLabel();
+        lbContraseñaA = new javax.swing.JLabel();
+        btnIngresar = new javax.swing.JButton();
+        txtContraseñaAdmin = new javax.swing.JPasswordField();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Inicio Sesión");
+        setResizable(false);
+
+        pnlFondo.setPreferredSize(new java.awt.Dimension(600, 300));
+        pnlFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnlAdmin.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Admin", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        pnlAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlAdmin.add(txtUsuarioAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 160, -1));
+
+        lbUsuarioA.setText("Usuario Admin");
+        pnlAdmin.add(lbUsuarioA, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
+
+        lbContraseñaA.setText("Contraseña");
+        pnlAdmin.add(lbContraseñaA, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, -1, -1));
+
+        btnIngresar.setText("Ingresar");
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
+        pnlAdmin.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, -1, -1));
+        pnlAdmin.add(txtContraseñaAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 160, -1));
+
+        pnlFondo.add(pnlAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 390, 240));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
+            .addComponent(pnlFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addComponent(pnlFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        try {
+            // Obtener las credenciales del usuario desde los campos de texto u otros componentes
+            String nombreUsuario = jTextFieldNombreUsuario.getText();
+            String contrasena = new String(jPasswordFieldContrasena.getPassword());
+
+            // Instancia de la clase CLogin para realizar la autenticación
+            Conexion.CAdmin objetoLoginA = new Conexion.CAdmin();
+
+            // Intentar autenticar al usuario
+            if (objetoLoginA.validarUsuarioAdmin(txtUsuarioAdmin, txtContraseñaAdmin)){
+                dispose();
+
+                // Abrir el FrameInicio
+                FrameAdmin objetoInicio = new FrameAdmin();
+                objetoInicio.setLocationRelativeTo(null);
+                objetoInicio.setVisible(true);
+            }
+
+            // Si el usuario se autentica correctamente, realizar acciones de inicio de sesión
+            // No es necesario hacer nada aquí ya que la acción se realiza dentro de validarUsuario
+        } catch (Exception e) {
+            // Manejar cualquier excepción que pueda ocurrir durante el proceso de autenticación
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Error de autenticación", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnIngresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -73,11 +140,20 @@ public class LoginAdmin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginAdmin().setVisible(true);
+                LoginAdmin objetoLoginA = new LoginAdmin();
+                objetoLoginA.setLocationRelativeTo(null);
+                objetoLoginA.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnIngresar;
+    private javax.swing.JLabel lbContraseñaA;
+    private javax.swing.JLabel lbUsuarioA;
+    private javax.swing.JPanel pnlAdmin;
+    private javax.swing.JPanel pnlFondo;
+    private javax.swing.JPasswordField txtContraseñaAdmin;
+    private javax.swing.JTextField txtUsuarioAdmin;
     // End of variables declaration//GEN-END:variables
 }

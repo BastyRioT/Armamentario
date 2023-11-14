@@ -29,10 +29,6 @@ public class FrameInicio extends javax.swing.JFrame {
     Icon iconoLog = new ImageIcon(icLogout.getImage().getScaledInstance(20,20, Image.SCALE_SMOOTH));
     itemLogout.setIcon(iconoLog);
     
-    ImageIcon icAdmin = new ImageIcon(getClass().getResource("/Imagenes/admin.png"));
-    Icon iconoAdm = new ImageIcon(icAdmin.getImage().getScaledInstance(20,20, Image.SCALE_SMOOTH));
-    itemAdmin.setIcon(iconoAdm);
-    
      timer.start();
      
     
@@ -79,7 +75,7 @@ public class FrameInicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
+        pnlFondo = new javax.swing.JPanel();
         btnArmas = new javax.swing.JButton();
         btnEquipamiento = new javax.swing.JButton();
         btnHistorial = new javax.swing.JButton();
@@ -91,58 +87,63 @@ public class FrameInicio extends javax.swing.JFrame {
         mnbMenu = new javax.swing.JMenuBar();
         menuOpciones = new javax.swing.JMenu();
         itemLogout = new javax.swing.JMenuItem();
-        menuAdmin = new javax.swing.JMenu();
-        itemAdmin = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Inicio");
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(900, 500));
+        setResizable(false);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlFondo.setBackground(new java.awt.Color(255, 255, 255));
+        pnlFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnArmas.setBackground(new java.awt.Color(40, 114, 51));
+        btnArmas.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 20)); // NOI18N
+        btnArmas.setForeground(new java.awt.Color(255, 255, 255));
         btnArmas.setText("Armas");
         btnArmas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnArmasActionPerformed(evt);
             }
         });
-        jPanel2.add(btnArmas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 160, 50));
+        pnlFondo.add(btnArmas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 160, 50));
 
+        btnEquipamiento.setBackground(new java.awt.Color(40, 114, 51));
+        btnEquipamiento.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 20)); // NOI18N
+        btnEquipamiento.setForeground(new java.awt.Color(255, 255, 255));
         btnEquipamiento.setText("Equipamiento");
         btnEquipamiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEquipamientoActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEquipamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 160, 50));
+        pnlFondo.add(btnEquipamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 160, 50));
 
+        btnHistorial.setBackground(new java.awt.Color(40, 114, 51));
+        btnHistorial.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        btnHistorial.setForeground(new java.awt.Color(255, 255, 255));
         btnHistorial.setText("Historial de Cambios");
         btnHistorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHistorialActionPerformed(evt);
             }
         });
-        jPanel2.add(btnHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 160, 50));
+        pnlFondo.add(btnHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 160, 50));
 
         lbIH.setText("Hora:");
-        jPanel2.add(lbIH, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
+        pnlFondo.add(lbIH, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
 
         lbIF.setText("Fecha:");
-        jPanel2.add(lbIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, -1, -1));
-
-        lblHora.setText("jLabel1");
-        jPanel2.add(lblHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, -1, -1));
-
-        lblFecha.setText("jLabel1");
-        jPanel2.add(lblFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, -1, -1));
+        pnlFondo.add(lbIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, -1, -1));
+        pnlFondo.add(lblHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, -1, -1));
+        pnlFondo.add(lblFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, -1, -1));
 
         lbInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio2.png"))); // NOI18N
-        jPanel2.add(lbInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        pnlFondo.add(lbInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        menuOpciones.setText("Opciones");
+        menuOpciones.setText("Cerrar Sesión");
 
-        itemLogout.setText("Cerrar Sesión");
+        itemLogout.setText("Salir");
         itemLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemLogoutActionPerformed(evt);
@@ -152,24 +153,17 @@ public class FrameInicio extends javax.swing.JFrame {
 
         mnbMenu.add(menuOpciones);
 
-        menuAdmin.setText("Administración");
-
-        itemAdmin.setText("Ingresar");
-        menuAdmin.add(itemAdmin);
-
-        mnbMenu.add(menuAdmin);
-
         setJMenuBar(mnbMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -238,16 +232,14 @@ public class FrameInicio extends javax.swing.JFrame {
     private javax.swing.JButton btnArmas;
     private javax.swing.JButton btnEquipamiento;
     private javax.swing.JButton btnHistorial;
-    private javax.swing.JMenuItem itemAdmin;
     private javax.swing.JMenuItem itemLogout;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbIF;
     private javax.swing.JLabel lbIH;
     private javax.swing.JLabel lbInicio;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblHora;
-    private javax.swing.JMenu menuAdmin;
     private javax.swing.JMenu menuOpciones;
     private javax.swing.JMenuBar mnbMenu;
+    private javax.swing.JPanel pnlFondo;
     // End of variables declaration//GEN-END:variables
 }

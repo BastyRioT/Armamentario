@@ -4,6 +4,7 @@
  */
 package Pestañas;
 
+import Equipamiento.EditarE;
 import Equipamiento.RegistroE;
 import Logica.LogicaEquipo;
 import javax.swing.JOptionPane;
@@ -139,6 +140,9 @@ public class FrameEquipamiento extends javax.swing.JFrame {
         });
         pnlFondo.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 190, -1));
 
+        btnBuscar.setBackground(new java.awt.Color(40, 114, 51));
+        btnBuscar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,37 +152,41 @@ public class FrameEquipamiento extends javax.swing.JFrame {
         pnlFondo.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, -1, -1));
 
         btnRegistrar.setBackground(new java.awt.Color(40, 114, 51));
-        btnRegistrar.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        btnRegistrar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         btnRegistrar.setText("Registrar Equipo");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
             }
         });
-        pnlFondo.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 170, 60));
+        pnlFondo.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 170, 60));
 
         btnEditar.setBackground(new java.awt.Color(40, 114, 51));
-        btnEditar.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        btnEditar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 20)); // NOI18N
+        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
         btnEditar.setText("Editar Equipo");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
             }
         });
-        pnlFondo.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 170, 60));
+        pnlFondo.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 170, 60));
 
         btnEliminar.setBackground(new java.awt.Color(40, 114, 51));
-        btnEliminar.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        btnEliminar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 20)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("Dar de Baja");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
             }
         });
-        pnlFondo.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 170, 60));
+        pnlFondo.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 170, 60));
 
         btnVolver.setBackground(new java.awt.Color(40, 114, 51));
-        btnVolver.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        btnVolver.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(255, 255, 255));
         btnVolver.setText("Volver");
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,13 +238,30 @@ public class FrameEquipamiento extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        RegistroE objetoRegistro = new RegistroE();
+        RegistroE objetoRegistro = new RegistroE(this);
         objetoRegistro.setLocationRelativeTo(null);
         objetoRegistro.setVisible(true);
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        //
+        // Obtener la fila seleccionada
+        int filaSeleccionada = tblEquipo.getSelectedRow();
+
+        // Verificar si se seleccionó alguna fila
+        if (filaSeleccionada != -1) {
+            // Obtener los datos de la fila seleccionada
+            String numeroSerie = tblEquipo.getValueAt(filaSeleccionada, 0).toString();
+            String categoria = tblEquipo.getValueAt(filaSeleccionada, 1).toString();
+            String detalle = tblEquipo.getValueAt(filaSeleccionada, 2).toString();
+
+            // Crear una instancia de EditarA y pasar los datos
+            EditarE ventanaEditar = new EditarE(this, numeroSerie, categoria, detalle);
+
+            ventanaEditar.setLocationRelativeTo(null);
+            ventanaEditar.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor, selecciona un equipamiento para editar.", "Error", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
@@ -261,15 +286,13 @@ public class FrameEquipamiento extends javax.swing.JFrame {
                 // Eliminar la fila del modelo de la tabla
                 DefaultTableModel modelo = (DefaultTableModel) tblEquipo.getModel();
                 modelo.removeRow(filaSeleccionada);
-                JOptionPane.showMessageDialog(null, "Arma dada de baja exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Equipo dado de baja exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(null, "Error al dar de baja el arma.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error al dar de baja el equipo.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Por favor, selecciona un arma para dar de baja.", "Error", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Por favor, selecciona un equipamiento para dar de baja.", "Error", JOptionPane.WARNING_MESSAGE);
         }
-       
-    
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**

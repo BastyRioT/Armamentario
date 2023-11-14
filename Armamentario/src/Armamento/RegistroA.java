@@ -5,6 +5,7 @@
 package Armamento;
 
 import Logica.LogicaArmas;
+import Pestañas.FrameArmas;
 import javax.swing.JOptionPane;
 
 
@@ -14,11 +15,13 @@ import javax.swing.JOptionPane;
  */
 public class RegistroA extends javax.swing.JFrame {
 
+    private FrameArmas frameArmas;
     /**
      * Creates new form RegistroA
      */
-    public RegistroA() {
+    public RegistroA(FrameArmas frameArmas) {
         initComponents();
+        this.frameArmas = frameArmas;
     }
 
     /**
@@ -42,6 +45,7 @@ public class RegistroA extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registrar Arma");
+        setResizable(false);
 
         pnlFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -117,6 +121,7 @@ public class RegistroA extends javax.swing.JFrame {
             boolean registroExitoso = logica.registrarArma(numeroSerie, categoria, detalles);
             if (registroExitoso) {
             JOptionPane.showMessageDialog(this, "Registro exitoso");
+            frameArmas.mostrarArmamento();
             this.dispose();
             }
         }

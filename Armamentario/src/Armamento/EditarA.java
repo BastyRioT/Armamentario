@@ -5,6 +5,7 @@
 package Armamento;
 
 import Logica.LogicaArmas;
+import Pestañas.FrameArmas;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,12 +13,14 @@ import javax.swing.JOptionPane;
  * @author basty
  */
 public class EditarA extends javax.swing.JFrame {
-
+    
+    private FrameArmas frameArmas;
     /**
      * Creates new form RegistroA
      */
-    public EditarA(String numeroSerie, String categoria, String detalles) {
+    public EditarA(FrameArmas frameArmas, String numeroSerie, String categoria, String detalles) {
         initComponents();
+        this.frameArmas = frameArmas;
         txtNumero.setText(numeroSerie);
         cmbCategoria.setSelectedItem(categoria);
         txtDetalle.setText(detalles);
@@ -45,6 +48,7 @@ public class EditarA extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Editar Arma");
+        setResizable(false);
 
         pnlFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -116,6 +120,7 @@ public class EditarA extends javax.swing.JFrame {
 
         if (exito) {
             JOptionPane.showMessageDialog(this, "Edición exitosa.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            frameArmas.mostrarArmamento();
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Error al editar el arma.", "Error", JOptionPane.ERROR_MESSAGE);

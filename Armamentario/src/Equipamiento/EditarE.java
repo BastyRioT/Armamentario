@@ -4,6 +4,10 @@
  */
 package Equipamiento;
 
+import Logica.LogicaEquipo;
+import Pestañas.FrameEquipamiento;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -11,10 +15,16 @@ package Equipamiento;
  */
 public class EditarE extends javax.swing.JFrame {
 
+    private FrameEquipamiento frameEquipamiento;
     /**
      * Creates new form RegistroA
      */
-    public EditarE() {
+    public EditarE(FrameEquipamiento frameEquipamiento, String numeroSerie, String categoria, String detalles) {
+        initComponents();
+        this.frameEquipamiento = frameEquipamiento;
+        txtNumero.setText(numeroSerie);
+        cmbCategoria.setSelectedItem(categoria);
+        txtDetalle.setText(detalles);
     }
 
 
@@ -35,10 +45,11 @@ public class EditarE extends javax.swing.JFrame {
         lbNSerie = new javax.swing.JLabel();
         lbCategoria = new javax.swing.JLabel();
         lbDetalle = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lbEditarE = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Editar Equipo");
+        setResizable(false);
 
         pnlFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -75,8 +86,8 @@ public class EditarE extends javax.swing.JFrame {
         lbDetalle.setText("Detalles");
         pnlFondo.add(lbDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Editar.png"))); // NOI18N
-        pnlFondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        lbEditarE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Editar.png"))); // NOI18N
+        pnlFondo.add(lbEditarE, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,7 +112,20 @@ public class EditarE extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNumeroActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        
+        String numeroSerie = txtNumero.getText();
+        String nuevaCategoria = cmbCategoria.getSelectedItem().toString();
+        String nuevosDetalles = txtDetalle.getText();
+
+        LogicaEquipo logica = new LogicaEquipo();
+        boolean exito = logica.editarEquipo(numeroSerie, nuevaCategoria, nuevosDetalles);
+
+        if (exito) {
+            JOptionPane.showMessageDialog(this, "Edición exitosa.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            frameEquipamiento.mostrarEquipamiento();
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Error al editar el arma.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
@@ -112,9 +136,9 @@ public class EditarE extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<String> cmbCategoria;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbCategoria;
     private javax.swing.JLabel lbDetalle;
+    private javax.swing.JLabel lbEditarE;
     private javax.swing.JLabel lbNSerie;
     private javax.swing.JPanel pnlFondo;
     private javax.swing.JTextField txtDetalle;

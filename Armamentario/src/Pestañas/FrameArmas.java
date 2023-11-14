@@ -72,7 +72,7 @@ public class FrameArmas extends javax.swing.JFrame {
         btnEditar1 = new javax.swing.JButton();
         btnDarDeBaja = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        lbFArmas = new javax.swing.JLabel();
         mnbMenu = new javax.swing.JMenuBar();
         menuOpciones = new javax.swing.JMenu();
         itemLogout = new javax.swing.JMenuItem();
@@ -146,6 +146,9 @@ public class FrameArmas extends javax.swing.JFrame {
         });
         pnlFondo.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 190, -1));
 
+        btnBuscar.setBackground(new java.awt.Color(40, 114, 51));
+        btnBuscar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,37 +158,41 @@ public class FrameArmas extends javax.swing.JFrame {
         pnlFondo.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, -1, -1));
 
         btnRegistrar.setBackground(new java.awt.Color(40, 114, 51));
-        btnRegistrar.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        btnRegistrar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 20)); // NOI18N
+        btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         btnRegistrar.setText("Registrar Arma");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
             }
         });
-        pnlFondo.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 170, 60));
+        pnlFondo.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 170, 60));
 
         btnEditar1.setBackground(new java.awt.Color(40, 114, 51));
-        btnEditar1.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        btnEditar1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 20)); // NOI18N
+        btnEditar1.setForeground(new java.awt.Color(255, 255, 255));
         btnEditar1.setText("Editar Arma");
         btnEditar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditar1ActionPerformed(evt);
             }
         });
-        pnlFondo.add(btnEditar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 170, 60));
+        pnlFondo.add(btnEditar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 170, 60));
 
         btnDarDeBaja.setBackground(new java.awt.Color(40, 114, 51));
-        btnDarDeBaja.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        btnDarDeBaja.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 20)); // NOI18N
+        btnDarDeBaja.setForeground(new java.awt.Color(255, 255, 255));
         btnDarDeBaja.setText("Dar de Baja");
         btnDarDeBaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDarDeBajaActionPerformed(evt);
             }
         });
-        pnlFondo.add(btnDarDeBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 170, 60));
+        pnlFondo.add(btnDarDeBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 170, 60));
 
         btnVolver.setBackground(new java.awt.Color(40, 114, 51));
-        btnVolver.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        btnVolver.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(255, 255, 255));
         btnVolver.setText("Volver");
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,8 +201,8 @@ public class FrameArmas extends javax.swing.JFrame {
         });
         pnlFondo.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo2.png"))); // NOI18N
-        pnlFondo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        lbFArmas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo2.png"))); // NOI18N
+        pnlFondo.add(lbFArmas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         menuOpciones.setText("Opciones");
 
@@ -257,7 +264,7 @@ public class FrameArmas extends javax.swing.JFrame {
             String detalle = tblArmas.getValueAt(filaSeleccionada, 2).toString();
 
             // Crear una instancia de EditarA y pasar los datos
-            EditarA ventanaEditar = new EditarA(numeroSerie, categoria, detalle);
+            EditarA ventanaEditar = new EditarA(this, numeroSerie, categoria, detalle);
 
             ventanaEditar.setLocationRelativeTo(null);
             ventanaEditar.setVisible(true);
@@ -291,7 +298,7 @@ public class FrameArmas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDarDeBajaActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        RegistroA objetoRegistro = new RegistroA();
+        RegistroA objetoRegistro = new RegistroA(this);
         objetoRegistro.setLocationRelativeTo(null);
         objetoRegistro.setVisible(true);
     }//GEN-LAST:event_btnRegistrarActionPerformed
@@ -341,9 +348,9 @@ public class FrameArmas extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnVolver;
     private javax.swing.JMenuItem itemLogout;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lbFArmas;
     private javax.swing.JMenu menuOpciones;
     private javax.swing.JMenuBar mnbMenu;
     private javax.swing.JPanel pnlFondo;
