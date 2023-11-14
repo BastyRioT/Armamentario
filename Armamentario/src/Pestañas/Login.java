@@ -102,7 +102,7 @@ public class Login extends javax.swing.JFrame {
         pnlFondo.add(pnlCredenciales, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, -1, 200));
         pnlCredenciales.getAccessibleContext().setAccessibleDescription("");
 
-        lbLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Login (2).png"))); // NOI18N
+        lbLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/login.png"))); // NOI18N
         pnlFondo.add(lbLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

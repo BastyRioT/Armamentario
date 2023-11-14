@@ -96,9 +96,7 @@ public class FrameInicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(900, 500));
         setMinimumSize(new java.awt.Dimension(900, 500));
-        setPreferredSize(new java.awt.Dimension(910, 560));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -139,7 +137,7 @@ public class FrameInicio extends javax.swing.JFrame {
         lblFecha.setText("jLabel1");
         jPanel2.add(lblFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, -1, -1));
 
-        lbInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Login.png"))); // NOI18N
+        lbInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio2.png"))); // NOI18N
         jPanel2.add(lbInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         menuOpciones.setText("Opciones");
