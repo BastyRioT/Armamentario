@@ -4,6 +4,7 @@
  */
 package Conexion;
 
+import Logica.SesionUsuario;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
@@ -36,6 +37,8 @@ public class CLogin {
             rs = ps.executeQuery();
             
             if (rs.next()) {
+                String usuarioActual = rs.getString("usuario");
+                SesionUsuario.setUsuarioActual(usuarioActual);
                 return true;
             }
             else{

@@ -120,7 +120,7 @@ public class FrameInicio extends javax.swing.JFrame {
         pnlFondo.add(btnEquipamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 160, 50));
 
         btnHistorial.setBackground(new java.awt.Color(40, 114, 51));
-        btnHistorial.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        btnHistorial.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 13)); // NOI18N
         btnHistorial.setForeground(new java.awt.Color(255, 255, 255));
         btnHistorial.setText("Historial de Cambios");
         btnHistorial.addActionListener(new java.awt.event.ActionListener() {
@@ -184,7 +184,10 @@ public class FrameInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEquipamientoActionPerformed
 
     private void btnHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorialActionPerformed
-        // TODO add your handling code here:
+        FrameCambios objetoCambios = new FrameCambios();
+        objetoCambios.setLocationRelativeTo(null);
+        objetoCambios.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnHistorialActionPerformed
 
     private void itemLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLogoutActionPerformed

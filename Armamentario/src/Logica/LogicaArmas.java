@@ -81,7 +81,12 @@ public class LogicaArmas {
             cst.setString(3, detalles);
 
             int filasAfectadas = cst.executeUpdate();
-
+             if (filasAfectadas > 0) {
+            // Registrar el cambio en la tabla de cambios
+            LogicaArmas logicaArmas = new LogicaArmas();
+            String usuarioActual = SesionUsuario.getUsuarioActual();
+            logicaArmas.registrarCambio("Registro", "Se registró un nuevo arma.", usuarioActual, numeroSerie);
+            }   
             return filasAfectadas > 0;
 
         } catch (SQLException e) {
@@ -117,7 +122,12 @@ public class LogicaArmas {
         cst.setString(3, nuevosDetalles);
 
         int filasAfectadas = cst.executeUpdate();
-
+        if (filasAfectadas > 0) {
+            // Registrar el cambio en la tabla de cambios
+            LogicaArmas logicaArmas = new LogicaArmas();
+            String usuarioActual = SesionUsuario.getUsuarioActual();
+            logicaArmas.registrarCambio("Edición", "Se editó un arma.", usuarioActual, numeroSerie);
+        }
         return filasAfectadas > 0;
 
         } catch (SQLException e) {
@@ -132,12 +142,35 @@ public class LogicaArmas {
         cst.setString(1, numeroSerie);
 
         int filasAfectadas = cst.executeUpdate();
+        if (filasAfectadas > 0) {
+            // Registrar el cambio en la tabla de cambios
+            LogicaArmas logicaArmas = new LogicaArmas();
+            String usuarioActual = SesionUsuario.getUsuarioActual();
+            logicaArmas.registrarCambio("Dar de Baja", "Se dio de baja un arma.", usuarioActual, numeroSerie);
+        }
+        return filasAfectadas > 0;
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+        }
+    }
+    public boolean registrarCambio(String tipoCambio, String detalles, String usuario, String numeroSerie) {
+    try {
+        Connection cn = CConexion.getConnection();
+        CallableStatement cst = cn.prepareCall("{call RegistrarCambio(?, ?, ?, ?)}");
+        cst.setString(1, tipoCambio);
+        cst.setString(2, detalles);
+        cst.setString(3, usuario);
+        cst.setString(4, numeroSerie);
+
+        int filasAfectadas = cst.executeUpdate();
 
         return filasAfectadas > 0;
 
     } catch (SQLException e) {
         e.printStackTrace();
         return false;
+        }
     }
-}
 }

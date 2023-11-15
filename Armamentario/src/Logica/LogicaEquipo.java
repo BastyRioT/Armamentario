@@ -82,7 +82,12 @@ public class LogicaEquipo {
             cst.setString(3, detalles);
 
             int filasAfectadas = cst.executeUpdate();
-
+            if (filasAfectadas > 0) {
+            // Registrar el cambio en la tabla de cambios
+            LogicaEquipo logicaEquipo = new LogicaEquipo();
+            String usuarioActual = SesionUsuario.getUsuarioActual();
+            logicaEquipo.registrarCambio("Registro", "Se registro un equipamiento.", usuarioActual, numeroSerie);
+        }
             return filasAfectadas > 0;
 
         } catch (SQLException e) {
@@ -115,7 +120,12 @@ public class LogicaEquipo {
         cst.setString(1, numeroSerie);
 
         int filasAfectadas = cst.executeUpdate();
-
+        if (filasAfectadas > 0) {
+            // Registrar el cambio en la tabla de cambios
+            LogicaEquipo logicaEquipo = new LogicaEquipo();
+            String usuarioActual = SesionUsuario.getUsuarioActual();
+            logicaEquipo.registrarCambio("Dar de Baja", "Se dio de baja un equipamiento.", usuarioActual, numeroSerie);
+        }
         return filasAfectadas > 0;
 
     } catch (SQLException e) {
@@ -133,7 +143,12 @@ public class LogicaEquipo {
         cst.setString(3, nuevosDetalles);
 
         int filasAfectadas = cst.executeUpdate();
-
+        if (filasAfectadas > 0) {
+            // Registrar el cambio en la tabla de cambios
+            LogicaEquipo logicaEquipo = new LogicaEquipo();
+            String usuarioActual = SesionUsuario.getUsuarioActual();
+            logicaEquipo.registrarCambio("Edición", "Se editó un equipamiento.",usuarioActual, numeroSerie);
+        }
         return filasAfectadas > 0;
 
         } catch (SQLException e) {
@@ -141,4 +156,24 @@ public class LogicaEquipo {
             return false;
         }
     }
+     public void registrarCambio(String tipoCambio, String detalles, String usuario, String numeroSerie) {
+        try {
+            Connection cn = CConexion.getConnection();
+            CallableStatement cst = (CallableStatement) cn.prepareCall("{call RegistrarCambio(?, ?, ?, ?)}");
+
+            cst.setString(1, tipoCambio);
+            cst.setString(2, detalles);
+            cst.setString(3, usuario); // Utiliza el usuario proporcionado en el método
+            cst.setString(4, numeroSerie);
+
+            int filasAfectadas = cst.executeUpdate();
+
+            if (filasAfectadas > 0) {
+                // Registro exitoso, puedes realizar otras acciones si es necesario
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
+
