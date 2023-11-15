@@ -69,7 +69,7 @@ public class EditarE extends javax.swing.JFrame {
         pnlFondo.add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 240, -1));
         pnlFondo.add(txtDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 240, 40));
 
-        cmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chaleco", "Casco", "Linterna", " " }));
+        cmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chaleco", "Casco", "Linterna" }));
         cmbCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbCategoriaActionPerformed(evt);
