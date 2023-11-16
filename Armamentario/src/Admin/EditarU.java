@@ -5,7 +5,6 @@
 package Admin;
 
 import Logica.LogicaAdmin;
-import Pestañas.FrameAdmin;
 import javax.swing.JOptionPane;
 
 /**
@@ -47,6 +46,8 @@ public class EditarU extends javax.swing.JFrame {
 
         pnlFondo.setPreferredSize(new java.awt.Dimension(600, 300));
         pnlFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtUsuario.setEnabled(false);
         pnlFondo.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 233, -1));
         pnlFondo.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 233, -1));
 

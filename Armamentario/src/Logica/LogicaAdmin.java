@@ -113,4 +113,100 @@ public class LogicaAdmin {
         return false;
     }
 }
+    
+    public DefaultTableModel mostrarArmas() {
+        DefaultTableModel modelo = null;
+        try {
+            String[] titulos = {"N° Serie", "Categoria", "Detalles"};
+            modelo = new DefaultTableModel(null, titulos);
+            
+            Connection cn = CConexion.getConnection();
+            CallableStatement cst = cn.prepareCall("{call MostrarArmas()}");
+            ResultSet rs = cst.executeQuery();
+
+            while (rs.next()) {
+                Object[] fila = {
+                    rs.getString("numeroSerie"),
+                    rs.getString("categoria"),
+                    rs.getString("detalle")
+                };
+                modelo.addRow(fila);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return modelo;
+    }
+    
+    public DefaultTableModel mostrarArmasR() {
+        DefaultTableModel modeloR = null;
+        try {
+            String[] titulos = {"N° Serie", "Categoria", "Detalles"};
+            modeloR = new DefaultTableModel(null, titulos);
+            
+            Connection cn = CConexion.getConnection();
+            CallableStatement cst = cn.prepareCall("{call MostrarArmasR()}");
+            ResultSet rs = cst.executeQuery();
+
+            while (rs.next()) {
+                Object[] fila = {
+                    rs.getString("numeroSerie"),
+                    rs.getString("categoria"),
+                    rs.getString("detalle")
+                };
+                modeloR.addRow(fila);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return modeloR;
+    }
+    
+        public DefaultTableModel mostrarEquipo() {
+        DefaultTableModel modelo = null;
+        try {
+            String[] titulos = {"N° Serie", "Categoria", "Detalles"};
+            modelo = new DefaultTableModel(null, titulos);
+            
+            Connection cn = CConexion.getConnection();
+            CallableStatement cst = cn.prepareCall("{call MostrarEquipo()}");
+            ResultSet rs = cst.executeQuery();
+
+            while (rs.next()) {
+                Object[] fila = {
+                    rs.getString("numeroSerie"),
+                    rs.getString("categoria"),
+                    rs.getString("detalle")
+                };
+                modelo.addRow(fila);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return modelo;
+    }
+        
+    public DefaultTableModel mostrarEquipoR() {
+        DefaultTableModel modeloR = null;
+        try {
+            String[] titulos = {"N° Serie", "Categoria", "Detalles"};
+            modeloR = new DefaultTableModel(null, titulos);
+            
+            Connection cn = CConexion.getConnection();
+            CallableStatement cst = cn.prepareCall("{call MostrarEquipoR()}");
+            ResultSet rs = cst.executeQuery();
+
+            while (rs.next()) {
+                Object[] fila = {
+                    rs.getString("numeroSerie"),
+                    rs.getString("categoria"),
+                    rs.getString("detalle")
+                };
+                modeloR.addRow(fila);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return modeloR;
+    }
 }

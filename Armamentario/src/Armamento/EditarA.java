@@ -60,6 +60,7 @@ public class EditarA extends javax.swing.JFrame {
         });
         pnlFondo.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 233, -1, 30));
 
+        txtNumero.setEnabled(false);
         txtNumero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNumeroActionPerformed(evt);
