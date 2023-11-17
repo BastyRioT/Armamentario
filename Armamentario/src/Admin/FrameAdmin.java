@@ -22,30 +22,12 @@ public class FrameAdmin extends javax.swing.JFrame {
     public FrameAdmin() {
         initComponents();
         mostrarUsuarios();
-        mostrarArmamento();
-        mostrarEquipamiento();
     }
 
     public void mostrarUsuarios() {
         LogicaAdmin logica = new LogicaAdmin();
         DefaultTableModel modelo = logica.mostrarUsuario();
         tblUsuarios.setModel(modelo);
-    }
-    
-    public void mostrarArmamento() {
-        LogicaAdmin logica = new LogicaAdmin();
-        DefaultTableModel modelo = logica.mostrarArmas();
-        tblArmas.setModel(modelo);
-        DefaultTableModel modeloR = logica.mostrarArmasR();
-        tblArmasR.setModel(modeloR);
-    }
-    
-       public void mostrarEquipamiento() {
-        LogicaAdmin logica = new LogicaAdmin();
-        DefaultTableModel modelo = logica.mostrarEquipo();
-        tblEquipo.setModel(modelo);
-        DefaultTableModel modeloR = logica.mostrarEquipoR();
-        tblEquipoR.setModel(modeloR);
     }
     
     private boolean eliminarUsuario(String usuario) {
@@ -71,26 +53,12 @@ public class FrameAdmin extends javax.swing.JFrame {
         pnlsTabla = new javax.swing.JScrollPane();
         tblUsuarios = new javax.swing.JTable();
         btnSalir = new javax.swing.JButton();
-        pnlRespaldoA = new javax.swing.JPanel();
-        btnRespaldo = new javax.swing.JButton();
-        pnlsTabla1 = new javax.swing.JScrollPane();
-        tblArmasR = new javax.swing.JTable();
-        pnlsTabla2 = new javax.swing.JScrollPane();
-        tblEquipoR = new javax.swing.JTable();
-        pnlsTabla3 = new javax.swing.JScrollPane();
-        tblArmas = new javax.swing.JTable();
-        pnlsTabla4 = new javax.swing.JScrollPane();
-        tblEquipo = new javax.swing.JTable();
-        pnlRespaldoA3 = new javax.swing.JPanel();
-        btnRespaldo3 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        pnlRespaldo = new javax.swing.JPanel();
+        btnRespaldoE = new javax.swing.JButton();
+        btnRespaldoA = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Administración");
-        setPreferredSize(new java.awt.Dimension(1600, 950));
         setResizable(false);
 
         pnlCredenciales.setBorder(javax.swing.BorderFactory.createTitledBorder("Credenciales Usuarios"));
@@ -129,7 +97,7 @@ public class FrameAdmin extends javax.swing.JFrame {
                     .addComponent(btnEliminarUs, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditarUs, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRegistroUs, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlCredencialesLayout.setVerticalGroup(
             pnlCredencialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,191 +150,44 @@ public class FrameAdmin extends javax.swing.JFrame {
             }
         });
 
-        pnlRespaldoA.setBorder(javax.swing.BorderFactory.createTitledBorder("Respaldo Armas"));
+        pnlRespaldo.setBorder(javax.swing.BorderFactory.createTitledBorder("Respaldo"));
 
-        btnRespaldo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnRespaldo.setText("Respaldo");
-        btnRespaldo.addActionListener(new java.awt.event.ActionListener() {
+        btnRespaldoE.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnRespaldoE.setText("Respaldo Equipamiento");
+        btnRespaldoE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRespaldoActionPerformed(evt);
+                btnRespaldoEActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout pnlRespaldoALayout = new javax.swing.GroupLayout(pnlRespaldoA);
-        pnlRespaldoA.setLayout(pnlRespaldoALayout);
-        pnlRespaldoALayout.setHorizontalGroup(
-            pnlRespaldoALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlRespaldoALayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRespaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pnlRespaldoALayout.setVerticalGroup(
-            pnlRespaldoALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlRespaldoALayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRespaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        tblArmasR.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "N° Serie", "Categoria", "Detalles"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        pnlsTabla1.setViewportView(tblArmasR);
-        if (tblArmasR.getColumnModel().getColumnCount() > 0) {
-            tblArmasR.getColumnModel().getColumn(0).setResizable(false);
-            tblArmasR.getColumnModel().getColumn(1).setResizable(false);
-            tblArmasR.getColumnModel().getColumn(2).setResizable(false);
-        }
-
-        tblEquipoR.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "N° Serie", "Categoria", "Detalles"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        pnlsTabla2.setViewportView(tblEquipoR);
-        if (tblEquipoR.getColumnModel().getColumnCount() > 0) {
-            tblEquipoR.getColumnModel().getColumn(0).setResizable(false);
-            tblEquipoR.getColumnModel().getColumn(1).setResizable(false);
-            tblEquipoR.getColumnModel().getColumn(2).setResizable(false);
-        }
-
-        tblArmas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "N° Serie", "Categoria", "Detalles"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        pnlsTabla3.setViewportView(tblArmas);
-        if (tblArmas.getColumnModel().getColumnCount() > 0) {
-            tblArmas.getColumnModel().getColumn(0).setResizable(false);
-            tblArmas.getColumnModel().getColumn(1).setResizable(false);
-            tblArmas.getColumnModel().getColumn(2).setResizable(false);
-        }
-
-        tblEquipo.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "N° Serie", "Categoria", "Detalles"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        pnlsTabla4.setViewportView(tblEquipo);
-        if (tblEquipo.getColumnModel().getColumnCount() > 0) {
-            tblEquipo.getColumnModel().getColumn(0).setResizable(false);
-            tblEquipo.getColumnModel().getColumn(1).setResizable(false);
-            tblEquipo.getColumnModel().getColumn(2).setResizable(false);
-        }
-
-        pnlRespaldoA3.setBorder(javax.swing.BorderFactory.createTitledBorder("Respaldo Equipo"));
-
-        btnRespaldo3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnRespaldo3.setText("Respaldo");
-        btnRespaldo3.addActionListener(new java.awt.event.ActionListener() {
+        btnRespaldoA.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnRespaldoA.setText("Respaldo Armamento");
+        btnRespaldoA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRespaldo3ActionPerformed(evt);
+                btnRespaldoAActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout pnlRespaldoA3Layout = new javax.swing.GroupLayout(pnlRespaldoA3);
-        pnlRespaldoA3.setLayout(pnlRespaldoA3Layout);
-        pnlRespaldoA3Layout.setHorizontalGroup(
-            pnlRespaldoA3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlRespaldoA3Layout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
-                .addComponent(btnRespaldo3, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+        javax.swing.GroupLayout pnlRespaldoLayout = new javax.swing.GroupLayout(pnlRespaldo);
+        pnlRespaldo.setLayout(pnlRespaldoLayout);
+        pnlRespaldoLayout.setHorizontalGroup(
+            pnlRespaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRespaldoLayout.createSequentialGroup()
+                .addContainerGap(35, Short.MAX_VALUE)
+                .addGroup(pnlRespaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnRespaldoE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRespaldoA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(39, 39, 39))
         );
-        pnlRespaldoA3Layout.setVerticalGroup(
-            pnlRespaldoA3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlRespaldoA3Layout.createSequentialGroup()
-                .addContainerGap(92, Short.MAX_VALUE)
-                .addComponent(btnRespaldo3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+        pnlRespaldoLayout.setVerticalGroup(
+            pnlRespaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRespaldoLayout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(btnRespaldoA, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnRespaldoE, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
-
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Respaldo");
-
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Respaldo");
-
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Original");
-
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Original");
 
         javax.swing.GroupLayout pnlFondoLayout = new javax.swing.GroupLayout(pnlFondo);
         pnlFondo.setLayout(pnlFondoLayout);
@@ -375,67 +196,29 @@ public class FrameAdmin extends javax.swing.JFrame {
             .addGroup(pnlFondoLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlFondoLayout.createSequentialGroup()
-                            .addGroup(pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(pnlRespaldoA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(pnlCredenciales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGap(47, 47, 47)
-                            .addGroup(pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(pnlsTabla, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
-                                .addComponent(pnlsTabla1, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addGap(18, 18, 18)
-                            .addComponent(pnlsTabla3, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(pnlFondoLayout.createSequentialGroup()
-                            .addComponent(pnlRespaldoA3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(47, 47, 47)
-                            .addComponent(pnlsTabla2, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(pnlsTabla4, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(pnlFondoLayout.createSequentialGroup()
-                .addGap(597, 597, 597)
-                .addGroup(pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlFondoLayout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 550, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(337, 337, 337))
-                    .addGroup(pnlFondoLayout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 553, Short.MAX_VALUE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(334, 334, 334))))
+                        .addGroup(pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(pnlCredenciales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlRespaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(pnlsTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(36, 36, 36))
         );
         pnlFondoLayout.setVerticalGroup(
             pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlFondoLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlCredenciales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlsTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(1, 1, 1)
-                .addGroup(pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3))
-                .addGap(1, 1, 1)
-                .addGroup(pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlsTabla3, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                    .addComponent(pnlRespaldoA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlsTabla1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(1, 1, 1)
-                .addGroup(pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4))
-                .addGap(1, 1, 1)
-                .addGroup(pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlsTabla4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(pnlRespaldoA3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlsTabla2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap(44, Short.MAX_VALUE)
+                .addComponent(pnlsTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalir)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
+            .addGroup(pnlFondoLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(pnlCredenciales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlRespaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -504,13 +287,17 @@ public class FrameAdmin extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void btnRespaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRespaldoActionPerformed
-        
-    }//GEN-LAST:event_btnRespaldoActionPerformed
+    private void btnRespaldoEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRespaldoEActionPerformed
+        FrameRespaldoE objetoFrame = new FrameRespaldoE();
+        objetoFrame.setLocationRelativeTo(null);
+        objetoFrame.setVisible(true);
+    }//GEN-LAST:event_btnRespaldoEActionPerformed
 
-    private void btnRespaldo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRespaldo3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRespaldo3ActionPerformed
+    private void btnRespaldoAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRespaldoAActionPerformed
+        FrameRespaldoA objetoFrame = new FrameRespaldoA();
+        objetoFrame.setLocationRelativeTo(null);
+        objetoFrame.setVisible(true);
+    }//GEN-LAST:event_btnRespaldoAActionPerformed
 
     /**
      * @param args the command line arguments
@@ -553,30 +340,13 @@ public class FrameAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnEditarUs;
     private javax.swing.JButton btnEliminarUs;
     private javax.swing.JButton btnRegistroUs;
-    private javax.swing.JButton btnRespaldo;
-    private javax.swing.JButton btnRespaldo1;
-    private javax.swing.JButton btnRespaldo2;
-    private javax.swing.JButton btnRespaldo3;
+    private javax.swing.JButton btnRespaldoA;
+    private javax.swing.JButton btnRespaldoE;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel pnlCredenciales;
     private javax.swing.JPanel pnlFondo;
-    private javax.swing.JPanel pnlRespaldoA;
-    private javax.swing.JPanel pnlRespaldoA1;
-    private javax.swing.JPanel pnlRespaldoA2;
-    private javax.swing.JPanel pnlRespaldoA3;
+    private javax.swing.JPanel pnlRespaldo;
     private javax.swing.JScrollPane pnlsTabla;
-    private javax.swing.JScrollPane pnlsTabla1;
-    private javax.swing.JScrollPane pnlsTabla2;
-    private javax.swing.JScrollPane pnlsTabla3;
-    private javax.swing.JScrollPane pnlsTabla4;
-    private javax.swing.JTable tblArmas;
-    private javax.swing.JTable tblArmasR;
-    private javax.swing.JTable tblEquipo;
-    private javax.swing.JTable tblEquipoR;
     private javax.swing.JTable tblUsuarios;
     // End of variables declaration//GEN-END:variables
 }

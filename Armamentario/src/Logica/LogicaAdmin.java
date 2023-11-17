@@ -162,6 +162,67 @@ public class LogicaAdmin {
         return modeloR;
     }
     
+        public boolean EliminarArmaR(String numeroSerie) {
+    try {
+        Connection cn = CConexion.getConnection();
+        CallableStatement cst = cn.prepareCall("{call EliminarArmaR(?)}");
+        cst.setString(1, numeroSerie);
+
+        int filasAfectadas = cst.executeUpdate();
+        if (filasAfectadas > 0) {
+            // Registrar el cambio en la tabla de cambios
+            LogicaArmas logicaArmas = new LogicaArmas();
+            String usuarioActual = SesionUsuario.getUsuarioActual();
+            logicaArmas.registrarCambio("Eliminar", "Se elimino el arma.", usuarioActual, numeroSerie);
+        }
+        return filasAfectadas > 0;
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+        }
+    }
+        
+    public boolean verificarExistenciaArma(String numeroSerie) {
+        try {
+            Connection cn = CConexion.getConnection();
+            PreparedStatement pst = cn.prepareStatement("SELECT COUNT(*) FROM armamento WHERE numeroSerie = ?");
+            pst.setString(1, numeroSerie);
+
+            ResultSet rs = pst.executeQuery();
+            rs.next();
+
+            return rs.getInt(1) > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al verificar el arma en la tabla original.", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
+
+    public boolean respaldarArma(String numeroSerie, String categoria, String detalle) {
+        try {
+                if (verificarExistenciaArma(numeroSerie)) {
+                    JOptionPane.showMessageDialog(null, "Este arma ya existe en la tabla original.", "Error", JOptionPane.WARNING_MESSAGE);
+                    return false;
+                }
+
+                Connection cn = CConexion.getConnection();
+                CallableStatement cst = cn.prepareCall("{call RespaldarArma(?, ?, ?)}");
+                cst.setString(1, numeroSerie);
+                cst.setString(2, categoria);
+                cst.setString(3, detalle);
+
+                int filasAfectadas = cst.executeUpdate();
+                return filasAfectadas > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
         public DefaultTableModel mostrarEquipo() {
         DefaultTableModel modelo = null;
         try {
@@ -208,5 +269,66 @@ public class LogicaAdmin {
             e.printStackTrace();
         }
         return modeloR;
+    }
+    
+        public boolean EliminarEquipoR(String numeroSerie) {
+    try {
+        Connection cn = CConexion.getConnection();
+        CallableStatement cst = cn.prepareCall("{call EliminarEquipoR(?)}");
+        cst.setString(1, numeroSerie);
+
+        int filasAfectadas = cst.executeUpdate();
+        if (filasAfectadas > 0) {
+            // Registrar el cambio en la tabla de cambios
+            LogicaEquipo logicaEquipo = new LogicaEquipo();
+            String usuarioActual = SesionUsuario.getUsuarioActual();
+            logicaEquipo.registrarCambio("Dar de Baja", "Se elimino un equipamiento.", usuarioActual, numeroSerie);
+        }
+        return filasAfectadas > 0;
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+        }
+    }
+        
+    public boolean verificarExistenciaEquipo(String numeroSerie) {
+        try {
+            Connection cn = CConexion.getConnection();
+            PreparedStatement pst = cn.prepareStatement("SELECT COUNT(*) FROM equipamiento WHERE numeroSerie = ?");
+            pst.setString(1, numeroSerie);
+
+            ResultSet rs = pst.executeQuery();
+            rs.next();
+
+            return rs.getInt(1) > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al verificar el equipo en la tabla original.", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
+
+    public boolean respaldarEquipo(String numeroSerie, String categoria, String detalle) {
+        try {
+                if (verificarExistenciaEquipo(numeroSerie)) {
+                    JOptionPane.showMessageDialog(null, "Este equipamiento ya existe en la tabla original.", "Error", JOptionPane.WARNING_MESSAGE);
+                    return false;
+                }
+
+                Connection cn = CConexion.getConnection();
+                CallableStatement cst = cn.prepareCall("{call RespaldarEquipo(?, ?, ?)}");
+                cst.setString(1, numeroSerie);
+                cst.setString(2, categoria);
+                cst.setString(3, detalle);
+
+                int filasAfectadas = cst.executeUpdate();
+                return filasAfectadas > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

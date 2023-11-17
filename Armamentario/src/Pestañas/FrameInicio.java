@@ -120,9 +120,9 @@ public class FrameInicio extends javax.swing.JFrame {
         pnlFondo.add(btnEquipamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 160, 50));
 
         btnHistorial.setBackground(new java.awt.Color(40, 114, 51));
-        btnHistorial.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 13)); // NOI18N
+        btnHistorial.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 20)); // NOI18N
         btnHistorial.setForeground(new java.awt.Color(255, 255, 255));
-        btnHistorial.setText("Historial de Cambios");
+        btnHistorial.setText("Registros");
         btnHistorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHistorialActionPerformed(evt);
