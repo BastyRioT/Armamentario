@@ -106,7 +106,7 @@ public class FrameInicio extends javax.swing.JFrame {
                 btnArmasActionPerformed(evt);
             }
         });
-        pnlFondo.add(btnArmas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 160, 50));
+        pnlFondo.add(btnArmas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 160, 50));
 
         btnEquipamiento.setBackground(new java.awt.Color(40, 114, 51));
         btnEquipamiento.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 20)); // NOI18N
@@ -117,7 +117,7 @@ public class FrameInicio extends javax.swing.JFrame {
                 btnEquipamientoActionPerformed(evt);
             }
         });
-        pnlFondo.add(btnEquipamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 160, 50));
+        pnlFondo.add(btnEquipamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 160, 50));
 
         btnHistorial.setBackground(new java.awt.Color(40, 114, 51));
         btnHistorial.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 20)); // NOI18N
@@ -128,17 +128,17 @@ public class FrameInicio extends javax.swing.JFrame {
                 btnHistorialActionPerformed(evt);
             }
         });
-        pnlFondo.add(btnHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 160, 50));
+        pnlFondo.add(btnHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 160, 50));
 
         lbIH.setText("Hora:");
-        pnlFondo.add(lbIH, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
+        pnlFondo.add(lbIH, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, -1, -1));
 
         lbIF.setText("Fecha:");
-        pnlFondo.add(lbIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, -1, -1));
-        pnlFondo.add(lblHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, -1, -1));
-        pnlFondo.add(lblFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, -1, -1));
+        pnlFondo.add(lbIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, -1));
+        pnlFondo.add(lblHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, -1, -1));
+        pnlFondo.add(lblFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, -1, -1));
 
-        lbInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio2.png"))); // NOI18N
+        lbInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.png"))); // NOI18N
         pnlFondo.add(lbInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         menuOpciones.setText("Cerrar Sesión");

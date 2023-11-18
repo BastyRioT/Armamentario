@@ -51,6 +51,7 @@ public class FrameCambios extends javax.swing.JFrame {
         pnlsTabla = new javax.swing.JScrollPane();
         tblCambios = new javax.swing.JTable();
         btnVolver = new javax.swing.JButton();
+        lbCambios = new javax.swing.JLabel();
         mnbMenu = new javax.swing.JMenuBar();
         menuOpciones = new javax.swing.JMenu();
         itemLogout = new javax.swing.JMenuItem();
@@ -86,6 +87,7 @@ public class FrameCambios extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblCambios.setSelectionBackground(new java.awt.Color(204, 204, 204));
         pnlsTabla.setViewportView(tblCambios);
         if (tblCambios.getColumnModel().getColumnCount() > 0) {
             tblCambios.getColumnModel().getColumn(0).setResizable(false);
@@ -95,15 +97,20 @@ public class FrameCambios extends javax.swing.JFrame {
             tblCambios.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        pnlFondo.add(pnlsTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 840, -1));
+        pnlFondo.add(pnlsTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 800, 400));
 
+        btnVolver.setBackground(new java.awt.Color(40, 114, 51));
+        btnVolver.setForeground(new java.awt.Color(255, 255, 255));
         btnVolver.setText("Volver");
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVolverActionPerformed(evt);
             }
         });
-        pnlFondo.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 170, -1));
+        pnlFondo.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, 170, -1));
+
+        lbCambios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cambios.png"))); // NOI18N
+        pnlFondo.add(lbCambios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         menuOpciones.setText("Cerrar Sesión");
 
@@ -183,6 +190,7 @@ public class FrameCambios extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVolver;
     private javax.swing.JMenuItem itemLogout;
+    private javax.swing.JLabel lbCambios;
     private javax.swing.JMenu menuOpciones;
     private javax.swing.JMenuBar mnbMenu;
     private javax.swing.JPanel pnlFondo;

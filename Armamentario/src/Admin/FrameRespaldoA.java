@@ -47,6 +47,7 @@ public class FrameRespaldoA extends javax.swing.JFrame {
         pnlRespaldoA = new javax.swing.JPanel();
         btnEliminar = new javax.swing.JButton();
         btnRespaldo = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
         pnlsTabla1 = new javax.swing.JScrollPane();
         tblArmasR = new javax.swing.JTable();
         pnlsTabla3 = new javax.swing.JScrollPane();
@@ -56,7 +57,6 @@ public class FrameRespaldoA extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Respaldo Armamento");
-        setPreferredSize(new java.awt.Dimension(900, 620));
         setResizable(false);
 
         pnlRespaldoA.setBorder(javax.swing.BorderFactory.createTitledBorder("Opciones"));
@@ -77,6 +77,14 @@ public class FrameRespaldoA extends javax.swing.JFrame {
             }
         });
 
+        btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlRespaldoALayout = new javax.swing.GroupLayout(pnlRespaldoA);
         pnlRespaldoA.setLayout(pnlRespaldoALayout);
         pnlRespaldoALayout.setHorizontalGroup(
@@ -85,7 +93,8 @@ public class FrameRespaldoA extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(pnlRespaldoALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnRespaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVolver, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         pnlRespaldoALayout.setVerticalGroup(
@@ -95,7 +104,9 @@ public class FrameRespaldoA extends javax.swing.JFrame {
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnRespaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
 
         tblArmasR.setModel(new javax.swing.table.DefaultTableModel(
@@ -241,6 +252,10 @@ public class FrameRespaldoA extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRespaldoActionPerformed
 
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -282,6 +297,7 @@ public class FrameRespaldoA extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnRespaldo;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
