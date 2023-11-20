@@ -6,6 +6,7 @@ package Pestañas;
 
 import Equipamiento.EditarE;
 import Equipamiento.RegistroE;
+import Equipamiento.RetirarE;
 import Logica.LogicaEquipo;
 import java.awt.Image;
 import javax.swing.Icon;
@@ -75,6 +76,8 @@ public class FrameEquipamiento extends javax.swing.JFrame {
         btnEditar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
+        btnRetirar = new javax.swing.JButton();
+        btnReingresar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         mnbMenu = new javax.swing.JMenuBar();
         menuOpciones = new javax.swing.JMenu();
@@ -101,26 +104,26 @@ public class FrameEquipamiento extends javax.swing.JFrame {
 
         tblEquipo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "N° Serie", "Categoria", "Detalles"
+                "N° Serie", "Categoria", "Detalles", "Retirado Por"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -136,9 +139,10 @@ public class FrameEquipamiento extends javax.swing.JFrame {
             tblEquipo.getColumnModel().getColumn(0).setResizable(false);
             tblEquipo.getColumnModel().getColumn(1).setResizable(false);
             tblEquipo.getColumnModel().getColumn(2).setResizable(false);
+            tblEquipo.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        pnlFondo.add(pnlsTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 90, 600, 370));
+        pnlFondo.add(pnlsTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 600, 370));
 
         txtBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,26 +163,26 @@ public class FrameEquipamiento extends javax.swing.JFrame {
         pnlFondo.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, -1, -1));
 
         btnRegistrar.setBackground(new java.awt.Color(40, 114, 51));
-        btnRegistrar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        btnRegistrar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 20)); // NOI18N
         btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistrar.setText("Registrar Equipo");
+        btnRegistrar.setText("Registrar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
             }
         });
-        pnlFondo.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 170, 60));
+        pnlFondo.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 170, 60));
 
         btnEditar.setBackground(new java.awt.Color(40, 114, 51));
         btnEditar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 20)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar.setText("Editar Equipo");
+        btnEditar.setText("Editar");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
             }
         });
-        pnlFondo.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 170, 60));
+        pnlFondo.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 170, 60));
 
         btnEliminar.setBackground(new java.awt.Color(40, 114, 51));
         btnEliminar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 20)); // NOI18N
@@ -189,7 +193,7 @@ public class FrameEquipamiento extends javax.swing.JFrame {
                 btnEliminarActionPerformed(evt);
             }
         });
-        pnlFondo.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 170, 60));
+        pnlFondo.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 170, 60));
 
         btnVolver.setBackground(new java.awt.Color(40, 114, 51));
         btnVolver.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
@@ -200,14 +204,36 @@ public class FrameEquipamiento extends javax.swing.JFrame {
                 btnVolverActionPerformed(evt);
             }
         });
-        pnlFondo.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, -1, -1));
+        pnlFondo.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 170, 40));
+
+        btnRetirar.setBackground(new java.awt.Color(40, 114, 51));
+        btnRetirar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 20)); // NOI18N
+        btnRetirar.setForeground(new java.awt.Color(255, 255, 255));
+        btnRetirar.setText("Retirar");
+        btnRetirar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetirarActionPerformed(evt);
+            }
+        });
+        pnlFondo.add(btnRetirar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 170, 60));
+
+        btnReingresar.setBackground(new java.awt.Color(40, 114, 51));
+        btnReingresar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 20)); // NOI18N
+        btnReingresar.setForeground(new java.awt.Color(255, 255, 255));
+        btnReingresar.setText("Reingresar");
+        btnReingresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReingresarActionPerformed(evt);
+            }
+        });
+        pnlFondo.add(btnReingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 170, 60));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo2.png"))); // NOI18N
         pnlFondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        menuOpciones.setText("Opciones");
+        menuOpciones.setText("Cerrar Sesión");
 
-        itemLogout.setText("Cerrar Sesión");
+        itemLogout.setText("Salir");
         itemLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemLogoutActionPerformed(evt);
@@ -232,10 +258,6 @@ public class FrameEquipamiento extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void itemLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLogoutActionPerformed
-        cerrarSesion();
-    }//GEN-LAST:event_itemLogoutActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         FrameInicio objetoInicio = new FrameInicio();
@@ -277,7 +299,7 @@ public class FrameEquipamiento extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-    // TODO add your handling code here:
+
         int filaSeleccionada = tblEquipo.getSelectedRow();
         if (filaSeleccionada != -1) {
             String numeroSerie = tblEquipo.getValueAt(filaSeleccionada, 0).toString();
@@ -294,6 +316,49 @@ public class FrameEquipamiento extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Por favor, selecciona un equipamiento para dar de baja.", "Error", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarActionPerformed
+        int filaSeleccionada = tblEquipo.getSelectedRow();
+
+        if (filaSeleccionada != -1) {
+            String numeroSerie = tblEquipo.getValueAt(filaSeleccionada, 0).toString();
+            String retirado = tblEquipo.getValueAt(filaSeleccionada, 3).toString();
+
+            RetirarE ventanaRetirar = new RetirarE(this, numeroSerie, retirado);
+
+            ventanaRetirar.setLocationRelativeTo(null);
+            ventanaRetirar.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor, selecciona un equipamiento para retirar.", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnRetirarActionPerformed
+
+    private void btnReingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReingresarActionPerformed
+        int filaSeleccionada = tblEquipo.getSelectedRow();
+
+        if (filaSeleccionada != -1) {
+            String numeroSerie = tblEquipo.getValueAt(filaSeleccionada, 0).toString();
+            String retirado = tblEquipo.getValueAt(filaSeleccionada, 3).toString();
+
+            if (retirado.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Este equipamiento no se puede reingresar porque no ha sido retirado.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            } else {
+                LogicaEquipo logica = new LogicaEquipo();
+                if (logica.reingresarEquipo(numeroSerie)) {
+                    JOptionPane.showMessageDialog(this, "Equipamiento reingresada con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    mostrarEquipamiento();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error al reingresar el equipamiento.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor, selecciona una fila para reingresar el equipamiento.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnReingresarActionPerformed
+
+    private void itemLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLogoutActionPerformed
+        cerrarSesion();
+    }//GEN-LAST:event_itemLogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -339,6 +404,8 @@ public class FrameEquipamiento extends javax.swing.JFrame {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnReingresar;
+    private javax.swing.JButton btnRetirar;
     private javax.swing.JButton btnVolver;
     private javax.swing.JMenuItem itemLogout;
     private javax.swing.JLabel jLabel1;

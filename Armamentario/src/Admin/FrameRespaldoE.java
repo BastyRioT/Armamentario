@@ -96,11 +96,10 @@ public class FrameRespaldoE extends javax.swing.JFrame {
             pnlRespaldoALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlRespaldoALayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(pnlRespaldoALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlRespaldoALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnRespaldo1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(pnlRespaldoALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnRespaldo1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(btnVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         pnlRespaldoALayout.setVerticalGroup(
@@ -112,7 +111,7 @@ public class FrameRespaldoE extends javax.swing.JFrame {
                 .addComponent(btnRespaldo1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addContainerGap())
         );
 
         tblEquipoR.setModel(new javax.swing.table.DefaultTableModel(
@@ -120,14 +119,14 @@ public class FrameRespaldoE extends javax.swing.JFrame {
 
             },
             new String [] {
-                "N° Serie", "Categoria", "Detalles"
+                "N° Serie", "Categoria", "Detalles", "Retirado Por"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -148,14 +147,14 @@ public class FrameRespaldoE extends javax.swing.JFrame {
 
             },
             new String [] {
-                "N° Serie", "Categoria", "Detalles"
+                "N° Serie", "Categoria", "Detalles", "Retirado Por"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -247,9 +246,10 @@ public class FrameRespaldoE extends javax.swing.JFrame {
             String numeroSerie = tblEquipoR.getValueAt(filaSeleccionada, 0).toString();
             String categoria = tblEquipoR.getValueAt(filaSeleccionada, 1).toString();
             String detalle = tblEquipoR.getValueAt(filaSeleccionada, 2).toString();
+            String retirado = tblEquipoR.getValueAt(filaSeleccionada, 3).toString();
 
             LogicaAdmin logica = new LogicaAdmin();
-            if (logica.respaldarEquipo(numeroSerie, categoria, detalle)) {
+            if (logica.respaldarEquipo(numeroSerie, categoria, detalle, retirado)) {
                 mostrarEquipamiento();
                 JOptionPane.showMessageDialog(null, "Equipamiento respaldado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             }

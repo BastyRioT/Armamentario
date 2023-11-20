@@ -115,6 +115,16 @@ public class EditarA extends javax.swing.JFrame {
         String numeroSerie = txtNumero.getText();
         String nuevaCategoria = cmbCategoria.getSelectedItem().toString();
         String nuevosDetalles = txtDetalle.getText();
+        
+        if (nuevosDetalles.length() > 200) {
+            JOptionPane.showMessageDialog(null, "Los detalles no pueden tener más de 200 caracteres", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if (nuevosDetalles.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No puede estar el campo de Detalle vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         LogicaArmas logica = new LogicaArmas();
         boolean exito = logica.editarArma(numeroSerie, nuevaCategoria, nuevosDetalles);

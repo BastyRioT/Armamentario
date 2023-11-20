@@ -21,7 +21,7 @@ public class LogicaArmas {
     public DefaultTableModel mostrarArmas() {
         DefaultTableModel modelo = null;
         try {
-            String[] titulos = {"N° Serie", "Categoria", "Detalles"};
+            String[] titulos = {"N° Serie", "Categoria", "Detalles", "Retirado Por"};
             modelo = new DefaultTableModel(null, titulos);
             
             Connection cn = CConexion.getConnection();
@@ -32,7 +32,8 @@ public class LogicaArmas {
                 Object[] fila = {
                     rs.getString("numeroSerie"),
                     rs.getString("categoria"),
-                    rs.getString("detalle")
+                    rs.getString("detalle"),
+                    rs.getString("retirado")
                 };
                 modelo.addRow(fila);
             }
@@ -44,7 +45,7 @@ public class LogicaArmas {
      public DefaultTableModel buscarArma(String terminoBusqueda) {
         DefaultTableModel modelo = null;
         try {
-            String[] titulos = {"N° Serie", "Categoria", "Detalles"};
+            String[] titulos = {"N° Serie", "Categoria", "Detalles", "Retirado Por"};
             modelo = new DefaultTableModel(null, titulos);
 
             Connection cn = CConexion.getConnection();
@@ -56,7 +57,8 @@ public class LogicaArmas {
                 Object[] fila = {
                     rs.getString("numeroSerie"),
                     rs.getString("categoria"),
-                    rs.getString("detalle")
+                    rs.getString("detalle"),
+                    rs.getString("retirado")
                 };
                 modelo.addRow(fila);
             }
@@ -79,6 +81,7 @@ public class LogicaArmas {
             cst.setString(1, numeroSerie);
             cst.setString(2, categoria);
             cst.setString(3, detalles);
+            
 
             int filasAfectadas = cst.executeUpdate();
              if (filasAfectadas > 0) {
@@ -135,6 +138,7 @@ public class LogicaArmas {
             return false;
         }
     }
+     
     public boolean darDeBajaArma(String numeroSerie) {
     try {
         Connection cn = CConexion.getConnection();
@@ -155,6 +159,28 @@ public class LogicaArmas {
         return false;
         }
     }
+    
+    public boolean retirarArma(String numeroSerie, String retiradoPor) {
+    try {
+        Connection cn = CConexion.getConnection();
+        CallableStatement cst = cn.prepareCall("{call RetirarArma(?, ?)}");
+        cst.setString(1, numeroSerie);
+        cst.setString(2, retiradoPor);
+
+        int filasAfectadas = cst.executeUpdate();
+        if (filasAfectadas > 0) {
+            LogicaArmas logicaArmas = new LogicaArmas();
+            String usuarioActual = SesionUsuario.getUsuarioActual();
+            logicaArmas.registrarCambio("Retiro", "Se retiró un arma.", usuarioActual, numeroSerie);
+        }
+        return filasAfectadas > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
     public boolean registrarCambio(String tipoCambio, String detalles, String usuario, String numeroSerie) {
     try {
         Connection cn = CConexion.getConnection();
@@ -171,6 +197,26 @@ public class LogicaArmas {
     } catch (SQLException e) {
         e.printStackTrace();
         return false;
+        }
+    }
+    
+    public boolean reingresarArma(String numeroSerie) {
+        try {
+            Connection cn = CConexion.getConnection();
+            CallableStatement cst = cn.prepareCall("{call ReingresarArma(?)}");
+            cst.setString(1, numeroSerie);
+
+            int filasAfectadas = cst.executeUpdate();
+            if (filasAfectadas > 0) {
+                LogicaArmas logicaArmas = new LogicaArmas();
+                String usuarioActual = SesionUsuario.getUsuarioActual();
+                logicaArmas.registrarCambio("Reingreso", "Se reingresó un arma.", usuarioActual, numeroSerie);
+            }
+            return filasAfectadas > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 }

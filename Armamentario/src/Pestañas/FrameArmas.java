@@ -6,6 +6,7 @@ package Pestañas;
 
 import Armamento.EditarA;
 import Armamento.RegistroA;
+import Armamento.RetirarA;
 import Logica.LogicaArmas;
 import java.awt.Image;
 import javax.swing.Icon;
@@ -66,34 +67,21 @@ public class FrameArmas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         pnlFondo = new javax.swing.JPanel();
         pnlsTabla = new javax.swing.JScrollPane();
         tblArmas = new javax.swing.JTable();
         txtBuscar = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         btnRegistrar = new javax.swing.JButton();
-        btnEditar1 = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
         btnDarDeBaja = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
+        btnRetirar = new javax.swing.JButton();
+        btnReingresar = new javax.swing.JButton();
         lbFArmas = new javax.swing.JLabel();
         mnbMenu = new javax.swing.JMenuBar();
         menuOpciones = new javax.swing.JMenu();
         itemLogout = new javax.swing.JMenuItem();
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Armamento");
@@ -105,26 +93,26 @@ public class FrameArmas extends javax.swing.JFrame {
 
         tblArmas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "N° Serie", "Categoria", "Detalles"
+                "N° Serie", "Categoria", "Detalles", "Retirado Por"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -140,6 +128,7 @@ public class FrameArmas extends javax.swing.JFrame {
             tblArmas.getColumnModel().getColumn(0).setResizable(false);
             tblArmas.getColumnModel().getColumn(1).setResizable(false);
             tblArmas.getColumnModel().getColumn(2).setResizable(false);
+            tblArmas.getColumnModel().getColumn(3).setResizable(false);
         }
 
         pnlFondo.add(pnlsTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 600, 370));
@@ -165,24 +154,24 @@ public class FrameArmas extends javax.swing.JFrame {
         btnRegistrar.setBackground(new java.awt.Color(40, 114, 51));
         btnRegistrar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 20)); // NOI18N
         btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistrar.setText("Registrar Arma");
+        btnRegistrar.setText("Registrar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
             }
         });
-        pnlFondo.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 170, 60));
+        pnlFondo.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 170, 60));
 
-        btnEditar1.setBackground(new java.awt.Color(40, 114, 51));
-        btnEditar1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 20)); // NOI18N
-        btnEditar1.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar1.setText("Editar Arma");
-        btnEditar1.addActionListener(new java.awt.event.ActionListener() {
+        btnEditar.setBackground(new java.awt.Color(40, 114, 51));
+        btnEditar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 20)); // NOI18N
+        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditar1ActionPerformed(evt);
+                btnEditarActionPerformed(evt);
             }
         });
-        pnlFondo.add(btnEditar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 170, 60));
+        pnlFondo.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 170, 60));
 
         btnDarDeBaja.setBackground(new java.awt.Color(40, 114, 51));
         btnDarDeBaja.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 20)); // NOI18N
@@ -193,7 +182,7 @@ public class FrameArmas extends javax.swing.JFrame {
                 btnDarDeBajaActionPerformed(evt);
             }
         });
-        pnlFondo.add(btnDarDeBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 170, 60));
+        pnlFondo.add(btnDarDeBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 170, 60));
 
         btnVolver.setBackground(new java.awt.Color(40, 114, 51));
         btnVolver.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
@@ -204,14 +193,36 @@ public class FrameArmas extends javax.swing.JFrame {
                 btnVolverActionPerformed(evt);
             }
         });
-        pnlFondo.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, -1, -1));
+        pnlFondo.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 170, 40));
+
+        btnRetirar.setBackground(new java.awt.Color(40, 114, 51));
+        btnRetirar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 20)); // NOI18N
+        btnRetirar.setForeground(new java.awt.Color(255, 255, 255));
+        btnRetirar.setText("Retirar");
+        btnRetirar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetirarActionPerformed(evt);
+            }
+        });
+        pnlFondo.add(btnRetirar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 170, 60));
+
+        btnReingresar.setBackground(new java.awt.Color(40, 114, 51));
+        btnReingresar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 20)); // NOI18N
+        btnReingresar.setForeground(new java.awt.Color(255, 255, 255));
+        btnReingresar.setText("Reingresar");
+        btnReingresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReingresarActionPerformed(evt);
+            }
+        });
+        pnlFondo.add(btnReingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 170, 60));
 
         lbFArmas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo2.png"))); // NOI18N
         pnlFondo.add(lbFArmas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        menuOpciones.setText("Opciones");
+        menuOpciones.setText("Cerrar Sesión");
 
-        itemLogout.setText("Cerrar Sesión");
+        itemLogout.setText("Salir");
         itemLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemLogoutActionPerformed(evt);
@@ -237,10 +248,6 @@ public class FrameArmas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void itemLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLogoutActionPerformed
-        cerrarSesion();
-    }//GEN-LAST:event_itemLogoutActionPerformed
-
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
 
         realizarBusqueda();
@@ -257,7 +264,7 @@ public class FrameArmas extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
-    private void btnEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar1ActionPerformed
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
 
         int filaSeleccionada = tblArmas.getSelectedRow();
         
@@ -273,7 +280,7 @@ public class FrameArmas extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Por favor, selecciona un arma para editar.", "Error", JOptionPane.WARNING_MESSAGE);
         }
-    }//GEN-LAST:event_btnEditar1ActionPerformed
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnDarDeBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBajaActionPerformed
 
@@ -301,6 +308,49 @@ public class FrameArmas extends javax.swing.JFrame {
         objetoRegistro.setLocationRelativeTo(null);
         objetoRegistro.setVisible(true);
     }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void btnRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarActionPerformed
+        int filaSeleccionada = tblArmas.getSelectedRow();
+        
+        if (filaSeleccionada != -1) {
+            String numeroSerie = tblArmas.getValueAt(filaSeleccionada, 0).toString();
+            String retirado = tblArmas.getValueAt(filaSeleccionada, 3).toString();
+
+            RetirarA ventanaRetirar = new RetirarA(this, numeroSerie, retirado);
+
+            ventanaRetirar.setLocationRelativeTo(null);
+            ventanaRetirar.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor, selecciona un arma para retirar.", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnRetirarActionPerformed
+
+    private void btnReingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReingresarActionPerformed
+    int filaSeleccionada = tblArmas.getSelectedRow();
+
+    if (filaSeleccionada != -1) {
+        String numeroSerie = tblArmas.getValueAt(filaSeleccionada, 0).toString();
+        String retirado = tblArmas.getValueAt(filaSeleccionada, 3).toString();
+
+        if (retirado.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Esta arma no se puede reingresar porque no ha sido retirada.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            } else {
+                LogicaArmas logica = new LogicaArmas();
+                if (logica.reingresarArma(numeroSerie)) {
+                    JOptionPane.showMessageDialog(this, "Arma reingresada con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    mostrarArmamento();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error al reingresar el arma.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor, selecciona una fila para reingresar el arma.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnReingresarActionPerformed
+
+    private void itemLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLogoutActionPerformed
+        cerrarSesion();
+    }//GEN-LAST:event_itemLogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -343,12 +393,12 @@ public class FrameArmas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnDarDeBaja;
-    private javax.swing.JButton btnEditar1;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnReingresar;
+    private javax.swing.JButton btnRetirar;
     private javax.swing.JButton btnVolver;
     private javax.swing.JMenuItem itemLogout;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbFArmas;
     private javax.swing.JMenu menuOpciones;
     private javax.swing.JMenuBar mnbMenu;

@@ -22,7 +22,7 @@ public class LogicaEquipo {
     public DefaultTableModel mostrarEquipo() {
         DefaultTableModel modelo = null;
         try {
-            String[] titulos = {"N° Serie", "Categoria", "Detalles"};
+            String[] titulos = {"N° Serie", "Categoria", "Detalles", "Retirado Por"};
             modelo = new DefaultTableModel(null, titulos);
             
             Connection cn = CConexion.getConnection();
@@ -33,7 +33,8 @@ public class LogicaEquipo {
                 Object[] fila = {
                     rs.getString("numeroSerie"),
                     rs.getString("categoria"),
-                    rs.getString("detalle")
+                    rs.getString("detalle"),
+                    rs.getString("retirado")
                 };
                 modelo.addRow(fila);
             }
@@ -45,7 +46,7 @@ public class LogicaEquipo {
     public DefaultTableModel buscarEquipamiento(String terminoBusqueda) {
         DefaultTableModel modelo = null;
         try {
-            String[] titulos = {"N° Serie", "Categoria", "Detalles"};
+            String[] titulos = {"N° Serie", "Categoria", "Detalles", "Retirado Por"};
             modelo = new DefaultTableModel(null, titulos);
 
             Connection cn = CConexion.getConnection();
@@ -57,7 +58,8 @@ public class LogicaEquipo {
                 Object[] fila = {
                     rs.getString("numeroSerie"),
                     rs.getString("categoria"),
-                    rs.getString("detalle")
+                    rs.getString("detalle"),
+                    rs.getString("retirado")
                 };
                 modelo.addRow(fila);
             }
@@ -156,6 +158,29 @@ public class LogicaEquipo {
             return false;
         }
     }
+    
+        public boolean retirarEquipo(String numeroSerie, String retiradoPor) {
+    try {
+        Connection cn = CConexion.getConnection();
+        CallableStatement cst = cn.prepareCall("{call RetirarEquipo(?, ?)}");
+        cst.setString(1, numeroSerie);
+        cst.setString(2, retiradoPor);
+
+        int filasAfectadas = cst.executeUpdate();
+        if (filasAfectadas > 0) {
+            // Registrar el cambio en la tabla de cambios
+            LogicaEquipo logicaEquipo = new LogicaEquipo();
+            String usuarioActual = SesionUsuario.getUsuarioActual();
+            logicaEquipo.registrarCambio("Retiro", "Se retiró un equipo.", usuarioActual, numeroSerie);
+        }
+        return filasAfectadas > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
      public void registrarCambio(String tipoCambio, String detalles, String usuario, String numeroSerie) {
         try {
             Connection cn = CConexion.getConnection();
@@ -173,6 +198,26 @@ public class LogicaEquipo {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+     
+    public boolean reingresarEquipo(String numeroSerie) {
+        try {
+            Connection cn = CConexion.getConnection();
+            CallableStatement cst = cn.prepareCall("{call ReingresarEquipo(?)}");
+            cst.setString(1, numeroSerie);
+
+            int filasAfectadas = cst.executeUpdate();
+            if (filasAfectadas > 0) {
+                LogicaEquipo logicaEquipo= new LogicaEquipo();
+                String usuarioActual = SesionUsuario.getUsuarioActual();
+                logicaEquipo.registrarCambio("Reingreso", "Se reingresó un equipamiento.", usuarioActual, numeroSerie);
+            }
+            return filasAfectadas > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 }

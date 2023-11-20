@@ -103,10 +103,6 @@ public class EditarE extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cmbCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCategoriaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbCategoriaActionPerformed
-
     private void txtNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroActionPerformed
@@ -115,6 +111,16 @@ public class EditarE extends javax.swing.JFrame {
         String numeroSerie = txtNumero.getText();
         String nuevaCategoria = cmbCategoria.getSelectedItem().toString();
         String nuevosDetalles = txtDetalle.getText();
+
+        if (nuevosDetalles.length() > 200) {
+            JOptionPane.showMessageDialog(null, "Los detalles no pueden tener más de 200 caracteres", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if (nuevosDetalles.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No puede estar el campo de Detalle vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }        
 
         LogicaEquipo logica = new LogicaEquipo();
         boolean exito = logica.editarEquipo(numeroSerie, nuevaCategoria, nuevosDetalles);
@@ -127,6 +133,10 @@ public class EditarE extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error al editar el arma.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void cmbCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCategoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbCategoriaActionPerformed
 
     /**
      * @param args the command line arguments

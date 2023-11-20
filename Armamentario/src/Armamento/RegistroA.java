@@ -113,6 +113,16 @@ public class RegistroA extends javax.swing.JFrame {
         String categoria = cmbCategoria.getSelectedItem().toString();
         String detalles = txtDetalle.getText();
         
+        if (numeroSerie.length() > 20) {
+            JOptionPane.showMessageDialog(null, "El número de serie no puede tener más de 20 caracteres", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (detalles.length() > 200) {
+            JOptionPane.showMessageDialog(null, "Los detalles no pueden tener más de 200 caracteres", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         if (numeroSerie.isEmpty() || categoria.isEmpty() || detalles.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Todos los campos deben ser completados", "Error", JOptionPane.ERROR_MESSAGE);
             return;

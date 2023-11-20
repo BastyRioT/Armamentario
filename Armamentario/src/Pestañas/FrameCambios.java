@@ -57,6 +57,7 @@ public class FrameCambios extends javax.swing.JFrame {
         itemLogout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         pnlFondo.setPreferredSize(new java.awt.Dimension(900, 500));
         pnlFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -107,7 +108,7 @@ public class FrameCambios extends javax.swing.JFrame {
                 btnVolverActionPerformed(evt);
             }
         });
-        pnlFondo.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, 170, -1));
+        pnlFondo.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 460, 170, -1));
 
         lbCambios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cambios.png"))); // NOI18N
         pnlFondo.add(lbCambios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -182,7 +183,9 @@ public class FrameCambios extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrameCambios().setVisible(true);
+                FrameCambios objetoInicio = new FrameCambios();
+                objetoInicio.setLocationRelativeTo(null);
+                objetoInicio.setVisible(true);
             }
         });
     }

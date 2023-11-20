@@ -83,6 +83,11 @@ public class EditarU extends javax.swing.JFrame {
         String usuario = txtUsuario.getText();
         String contraseña = txtContraseña.getText();
 
+        if (contraseña.length() > 50) {
+            JOptionPane.showMessageDialog(null, "La contraseña no puede tener más de 50 caracteres", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         LogicaAdmin logica = new LogicaAdmin();
         boolean exito = logica.editarUsuario(usuario, contraseña);
 

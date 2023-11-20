@@ -117,7 +117,7 @@ public class LogicaAdmin {
     public DefaultTableModel mostrarArmas() {
         DefaultTableModel modelo = null;
         try {
-            String[] titulos = {"N° Serie", "Categoria", "Detalles"};
+            String[] titulos = {"N° Serie", "Categoria", "Detalles", "Retirado Por"};
             modelo = new DefaultTableModel(null, titulos);
             
             Connection cn = CConexion.getConnection();
@@ -128,7 +128,8 @@ public class LogicaAdmin {
                 Object[] fila = {
                     rs.getString("numeroSerie"),
                     rs.getString("categoria"),
-                    rs.getString("detalle")
+                    rs.getString("detalle"),
+                    rs.getString("retirado")
                 };
                 modelo.addRow(fila);
             }
@@ -141,7 +142,7 @@ public class LogicaAdmin {
     public DefaultTableModel mostrarArmasR() {
         DefaultTableModel modeloR = null;
         try {
-            String[] titulos = {"N° Serie", "Categoria", "Detalles"};
+            String[] titulos = {"N° Serie", "Categoria", "Detalles", "Retirado Por"};
             modeloR = new DefaultTableModel(null, titulos);
             
             Connection cn = CConexion.getConnection();
@@ -152,7 +153,8 @@ public class LogicaAdmin {
                 Object[] fila = {
                     rs.getString("numeroSerie"),
                     rs.getString("categoria"),
-                    rs.getString("detalle")
+                    rs.getString("detalle"),
+                    rs.getString("retirado")
                 };
                 modeloR.addRow(fila);
             }
@@ -201,7 +203,7 @@ public class LogicaAdmin {
         }
     }
 
-    public boolean respaldarArma(String numeroSerie, String categoria, String detalle) {
+    public boolean respaldarArma(String numeroSerie, String categoria, String detalle, String retirado) {
         try {
                 if (verificarExistenciaArma(numeroSerie)) {
                     JOptionPane.showMessageDialog(null, "Este arma ya existe en la tabla original.", "Error", JOptionPane.WARNING_MESSAGE);
@@ -209,10 +211,11 @@ public class LogicaAdmin {
                 }
 
                 Connection cn = CConexion.getConnection();
-                CallableStatement cst = cn.prepareCall("{call RespaldarArma(?, ?, ?)}");
+                CallableStatement cst = cn.prepareCall("{call RespaldarArma(?, ?, ?, ?)}");
                 cst.setString(1, numeroSerie);
                 cst.setString(2, categoria);
                 cst.setString(3, detalle);
+                cst.setString(4, retirado);
 
                 int filasAfectadas = cst.executeUpdate();
                 return filasAfectadas > 0;
@@ -226,7 +229,7 @@ public class LogicaAdmin {
         public DefaultTableModel mostrarEquipo() {
         DefaultTableModel modelo = null;
         try {
-            String[] titulos = {"N° Serie", "Categoria", "Detalles"};
+            String[] titulos = {"N° Serie", "Categoria", "Detalles", "Retirado Por"};
             modelo = new DefaultTableModel(null, titulos);
             
             Connection cn = CConexion.getConnection();
@@ -237,7 +240,8 @@ public class LogicaAdmin {
                 Object[] fila = {
                     rs.getString("numeroSerie"),
                     rs.getString("categoria"),
-                    rs.getString("detalle")
+                    rs.getString("detalle"),
+                    rs.getString("retirado")
                 };
                 modelo.addRow(fila);
             }
@@ -250,7 +254,7 @@ public class LogicaAdmin {
     public DefaultTableModel mostrarEquipoR() {
         DefaultTableModel modeloR = null;
         try {
-            String[] titulos = {"N° Serie", "Categoria", "Detalles"};
+            String[] titulos = {"N° Serie", "Categoria", "Detalles", "Retirado Por"};
             modeloR = new DefaultTableModel(null, titulos);
             
             Connection cn = CConexion.getConnection();
@@ -261,7 +265,8 @@ public class LogicaAdmin {
                 Object[] fila = {
                     rs.getString("numeroSerie"),
                     rs.getString("categoria"),
-                    rs.getString("detalle")
+                    rs.getString("detalle"),
+                    rs.getString("retirado")
                 };
                 modeloR.addRow(fila);
             }
@@ -310,7 +315,7 @@ public class LogicaAdmin {
         }
     }
 
-    public boolean respaldarEquipo(String numeroSerie, String categoria, String detalle) {
+    public boolean respaldarEquipo(String numeroSerie, String categoria, String detalle, String retirado) {
         try {
                 if (verificarExistenciaEquipo(numeroSerie)) {
                     JOptionPane.showMessageDialog(null, "Este equipamiento ya existe en la tabla original.", "Error", JOptionPane.WARNING_MESSAGE);
@@ -318,10 +323,11 @@ public class LogicaAdmin {
                 }
 
                 Connection cn = CConexion.getConnection();
-                CallableStatement cst = cn.prepareCall("{call RespaldarEquipo(?, ?, ?)}");
+                CallableStatement cst = cn.prepareCall("{call RespaldarEquipo(?, ?, ?, ?)}");
                 cst.setString(1, numeroSerie);
                 cst.setString(2, categoria);
                 cst.setString(3, detalle);
+                cst.setString(4, retirado);
 
                 int filasAfectadas = cst.executeUpdate();
                 return filasAfectadas > 0;

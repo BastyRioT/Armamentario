@@ -91,10 +91,10 @@ public class FrameRespaldoA extends javax.swing.JFrame {
             pnlRespaldoALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlRespaldoALayout.createSequentialGroup()
                 .addContainerGap(20, Short.MAX_VALUE)
-                .addGroup(pnlRespaldoALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRespaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVolver, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlRespaldoALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnRespaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(btnVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         pnlRespaldoALayout.setVerticalGroup(
@@ -106,7 +106,7 @@ public class FrameRespaldoA extends javax.swing.JFrame {
                 .addComponent(btnRespaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addContainerGap())
         );
 
         tblArmasR.setModel(new javax.swing.table.DefaultTableModel(
@@ -114,14 +114,14 @@ public class FrameRespaldoA extends javax.swing.JFrame {
 
             },
             new String [] {
-                "N° Serie", "Categoria", "Detalles"
+                "N° Serie", "Categoria", "Detalles", "Retirado Por"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -139,14 +139,14 @@ public class FrameRespaldoA extends javax.swing.JFrame {
 
             },
             new String [] {
-                "N° Serie", "Categoria", "Detalles"
+                "N° Serie", "Categoria", "Detalles", "Retirado Por"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -241,9 +241,10 @@ public class FrameRespaldoA extends javax.swing.JFrame {
             String numeroSerie = tblArmasR.getValueAt(filaSeleccionada, 0).toString();
             String categoria = tblArmasR.getValueAt(filaSeleccionada, 1).toString();
             String detalle = tblArmasR.getValueAt(filaSeleccionada, 2).toString();
+            String retirado = tblArmasR.getValueAt(filaSeleccionada, 3).toString();
 
             LogicaAdmin logica = new LogicaAdmin();
-            if (logica.respaldarArma(numeroSerie, categoria, detalle)) {
+            if (logica.respaldarArma(numeroSerie, categoria, detalle, retirado)) {
                 mostrarArmamento();
                 JOptionPane.showMessageDialog(null, "Arma respaldada exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             }

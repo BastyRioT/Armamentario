@@ -79,6 +79,16 @@ public class RegistrarU extends javax.swing.JFrame {
         String usuario = txtUsuario.getText();
         String contraseña = txtContraseña.getText();
         
+        if (usuario.length() > 50) {
+            JOptionPane.showMessageDialog(null, "El usuario no puede tener más de 50 caracteres", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (contraseña.length() > 50) {
+            JOptionPane.showMessageDialog(null, "La contraseña no puede tener más de 50 caracteres", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         if (usuario.isEmpty() || contraseña.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Todos los campos deben ser completados", "Error", JOptionPane.ERROR_MESSAGE);
             return;
