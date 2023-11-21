@@ -98,6 +98,7 @@ public class FrameEquipamiento extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Equipamiento");
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/sombrerito.png")).getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH));
         setResizable(false);
 
         pnlFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -316,16 +317,20 @@ public class FrameEquipamiento extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarActionPerformed
-        int filaSeleccionada = tblEquipo.getSelectedRow();
+    int filaSeleccionada = tblEquipo.getSelectedRow();
 
-        if (filaSeleccionada != -1) {
-            String numeroSerie = tblEquipo.getValueAt(filaSeleccionada, 0).toString();
-            String retirado = tblEquipo.getValueAt(filaSeleccionada, 3).toString();
+    if (filaSeleccionada != -1) {
+        String retirado = tblEquipo.getValueAt(filaSeleccionada, 3).toString();
 
-            RetirarE ventanaRetirar = new RetirarE(this, numeroSerie, retirado);
+        if (!retirado.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Este equipamiento ya fue retirado anteriormente.", "Error", JOptionPane.WARNING_MESSAGE);
+            } else {
+                String numeroSerie = tblEquipo.getValueAt(filaSeleccionada, 0).toString();
+                RetirarE ventanaRetirar = new RetirarE(this, numeroSerie, retirado);
 
-            ventanaRetirar.setLocationRelativeTo(null);
-            ventanaRetirar.setVisible(true);
+                ventanaRetirar.setLocationRelativeTo(null);
+                ventanaRetirar.setVisible(true);
+            }
         } else {
             JOptionPane.showMessageDialog(this, "Por favor, selecciona un equipamiento para retirar.", "Error", JOptionPane.WARNING_MESSAGE);
         }

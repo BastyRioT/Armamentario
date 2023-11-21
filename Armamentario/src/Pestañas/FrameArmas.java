@@ -85,6 +85,7 @@ public class FrameArmas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Armamento");
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/sombrerito.png")).getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH));
         setResizable(false);
 
         pnlFondo.setMinimumSize(new java.awt.Dimension(900, 500));
@@ -308,16 +309,19 @@ public class FrameArmas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarActionPerformed
-        int filaSeleccionada = tblArmas.getSelectedRow();
-        
-        if (filaSeleccionada != -1) {
-            String numeroSerie = tblArmas.getValueAt(filaSeleccionada, 0).toString();
-            String retirado = tblArmas.getValueAt(filaSeleccionada, 3).toString();
+    int filaSeleccionada = tblArmas.getSelectedRow();
+    
+    if (filaSeleccionada != -1) {
+        String numeroSerie = tblArmas.getValueAt(filaSeleccionada, 0).toString();
+        String retirado = tblArmas.getValueAt(filaSeleccionada, 3).toString();
 
-            RetirarA ventanaRetirar = new RetirarA(this, numeroSerie, retirado);
-
-            ventanaRetirar.setLocationRelativeTo(null);
-            ventanaRetirar.setVisible(true);
+        if (!retirado.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Esta arma ya ha sido retirada anteriormente.", "Error", JOptionPane.WARNING_MESSAGE);
+            } else {
+                RetirarA ventanaRetirar = new RetirarA(this, numeroSerie, retirado);
+                ventanaRetirar.setLocationRelativeTo(null);
+                ventanaRetirar.setVisible(true);
+            }
         } else {
             JOptionPane.showMessageDialog(this, "Por favor, selecciona un arma para retirar.", "Error", JOptionPane.WARNING_MESSAGE);
         }

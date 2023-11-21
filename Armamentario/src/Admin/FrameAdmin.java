@@ -4,11 +4,11 @@
  */
 package Admin;
 
-import Admin.EditarU;
-import Admin.RegistrarU;
 import Logica.LogicaAdmin;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -59,6 +59,7 @@ public class FrameAdmin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Administración");
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/sombrerito.png")).getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH));
         setResizable(false);
 
         pnlCredenciales.setBorder(javax.swing.BorderFactory.createTitledBorder("Credenciales Usuarios"));

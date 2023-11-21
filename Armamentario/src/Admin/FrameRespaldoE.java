@@ -7,6 +7,8 @@ package Admin;
 import Logica.LogicaAdmin;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -60,6 +62,7 @@ public class FrameRespaldoE extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Respaldo Equipamiento");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/sombrerito.png")).getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH));
         setResizable(false);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(900, 600));

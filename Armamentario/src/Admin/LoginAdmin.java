@@ -6,6 +6,8 @@ package Admin;
 import Admin.FrameAdmin;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -44,6 +46,7 @@ public class LoginAdmin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Inicio Sesión");
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/sombrerito.png")).getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH));
         setResizable(false);
 
         pnlFondo.setPreferredSize(new java.awt.Dimension(600, 300));

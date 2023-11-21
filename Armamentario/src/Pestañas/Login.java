@@ -31,8 +31,7 @@ public class Login extends javax.swing.JFrame {
         ImageIcon icAdmin = new ImageIcon(getClass().getResource("/Imagenes/admin.png"));
         Icon iconoAdm = new ImageIcon(icAdmin.getImage().getScaledInstance(20,20, Image.SCALE_SMOOTH));
         itemAdmin.setIcon(iconoAdm);
-    }
-    
+    }  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,6 +57,7 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inicio Sesión");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/sombrerito.png")).getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH));
         setResizable(false);
 
         pnlFondo.setToolTipText("");

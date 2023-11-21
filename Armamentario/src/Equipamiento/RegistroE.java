@@ -7,6 +7,8 @@ package Equipamiento;
 import Logica.LogicaEquipo;
 import Pestañas.FrameEquipamiento;
 import javax.swing.JOptionPane;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 
 
@@ -46,6 +48,7 @@ public class RegistroE extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registrar Equipo");
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/sombrerito.png")).getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH));
         setResizable(false);
 
         pnlFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

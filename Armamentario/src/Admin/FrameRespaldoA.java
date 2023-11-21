@@ -7,6 +7,8 @@ package Admin;
 import Logica.LogicaAdmin;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -57,6 +59,7 @@ public class FrameRespaldoA extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Respaldo Armamento");
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/sombrerito.png")).getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH));
         setResizable(false);
 
         pnlRespaldoA.setBorder(javax.swing.BorderFactory.createTitledBorder("Opciones"));

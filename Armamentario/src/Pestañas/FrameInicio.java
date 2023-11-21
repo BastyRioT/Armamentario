@@ -91,6 +91,7 @@ public class FrameInicio extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inicio");
         setBackground(new java.awt.Color(255, 255, 255));
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/sombrerito.png")).getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH));
         setMinimumSize(new java.awt.Dimension(900, 500));
         setResizable(false);
 
