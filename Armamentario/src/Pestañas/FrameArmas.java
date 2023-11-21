@@ -294,9 +294,7 @@ public class FrameArmas extends javax.swing.JFrame {
                 DefaultTableModel modelo = (DefaultTableModel) tblArmas.getModel();
                 modelo.removeRow(filaSeleccionada);
                 JOptionPane.showMessageDialog(null, "Arma dada de baja exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(null, "Error al dar de baja el arma.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            } 
         } else {
             JOptionPane.showMessageDialog(null, "Por favor, selecciona un arma para dar de baja.", "Error", JOptionPane.WARNING_MESSAGE);
         }

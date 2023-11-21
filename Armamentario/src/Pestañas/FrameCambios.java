@@ -57,6 +57,7 @@ public class FrameCambios extends javax.swing.JFrame {
         itemLogout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Registros");
         setResizable(false);
 
         pnlFondo.setPreferredSize(new java.awt.Dimension(900, 500));

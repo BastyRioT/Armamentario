@@ -97,7 +97,7 @@ public class FrameEquipamiento extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Armamento");
+        setTitle("Equipamiento");
         setResizable(false);
 
         pnlFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -309,9 +309,7 @@ public class FrameEquipamiento extends javax.swing.JFrame {
                 DefaultTableModel modelo = (DefaultTableModel) tblEquipo.getModel();
                 modelo.removeRow(filaSeleccionada);
                 JOptionPane.showMessageDialog(null, "Equipo dado de baja exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(null, "Error al dar de baja el equipo.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            } 
         } else {
             JOptionPane.showMessageDialog(null, "Por favor, selecciona un equipamiento para dar de baja.", "Error", JOptionPane.WARNING_MESSAGE);
         }

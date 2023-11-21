@@ -231,9 +231,7 @@ public class FrameRespaldoE extends javax.swing.JFrame {
                 modelo.removeRow(filaSeleccionada);
                 mostrarEquipamiento();
                 JOptionPane.showMessageDialog(null, "Equipo eliminado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(null, "Error al eliminar el equipo.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            } 
         } else {
             JOptionPane.showMessageDialog(null, "Por favor, selecciona un equipo para eliminar.", "Error", JOptionPane.WARNING_MESSAGE);
         }

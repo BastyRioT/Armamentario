@@ -226,9 +226,7 @@ public class FrameRespaldoA extends javax.swing.JFrame {
                 modelo.removeRow(filaSeleccionada);
                 mostrarArmamento();
                 JOptionPane.showMessageDialog(null, "Arma eliminada exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(null, "Error al eliminar el arma.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            } 
         } else {
             JOptionPane.showMessageDialog(null, "Por favor, selecciona un arma para eliminar.", "Error", JOptionPane.WARNING_MESSAGE);
         }

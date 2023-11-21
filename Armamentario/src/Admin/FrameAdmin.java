@@ -274,9 +274,7 @@ public class FrameAdmin extends javax.swing.JFrame {
                 DefaultTableModel modelo = (DefaultTableModel) tblUsuarios.getModel();
                 modelo.removeRow(filaSeleccionada);
                 JOptionPane.showMessageDialog(null, "Usuario eliminado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(null, "Error al eliminar el usuario.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            } 
         } else {
             JOptionPane.showMessageDialog(null, "Por favor, selecciona un usuario para eliminarlo.", "Error", JOptionPane.WARNING_MESSAGE);
         }

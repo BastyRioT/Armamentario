@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
@@ -116,25 +118,35 @@ public class LogicaEquipo {
         }
     }
     public boolean darDeBajaEquipamiento(String numeroSerie) {
-    try {
-        Connection cn = CConexion.getConnection();
-        CallableStatement cst = cn.prepareCall("{call DarDeBajaEquipamiento(?)}");
-        cst.setString(1, numeroSerie);
+     try {
+         UIManager.put("OptionPane.yesButtonText", "Sí");
+         UIManager.put("OptionPane.noButtonText", "No");
+        int confirmacion = JOptionPane.showConfirmDialog(null, "¿Estás seguro que quieres dar de baja el equipamiento?", "Confirmación", JOptionPane.YES_NO_OPTION);
 
-        int filasAfectadas = cst.executeUpdate();
-        if (filasAfectadas > 0) {
-            // Registrar el cambio en la tabla de cambios
-            LogicaEquipo logicaEquipo = new LogicaEquipo();
-            String usuarioActual = SesionUsuario.getUsuarioActual();
-            logicaEquipo.registrarCambio("Dar de Baja", "Se dio de baja un equipamiento.", usuarioActual, numeroSerie);
+        if (confirmacion == JOptionPane.YES_OPTION) {
+            
+            Connection cn = CConexion.getConnection();
+            CallableStatement cst = cn.prepareCall("{call DarDeBajaEquipamiento(?)}");
+            cst.setString(1, numeroSerie);
+
+            int filasAfectadas = cst.executeUpdate();
+            if (filasAfectadas > 0) {
+                LogicaEquipo logicaEquipo = new LogicaEquipo();
+                String usuarioActual = SesionUsuario.getUsuarioActual();
+                logicaEquipo.registrarCambio("Dar de Baja", "Se dio de baja un equipamiento.", usuarioActual, numeroSerie);
+            }
+            return filasAfectadas > 0;
+        } else {
+            // El usuario ha hecho clic en "No" o ha cerrado el cuadro de diálogo
+            return false;
         }
-        return filasAfectadas > 0;
 
     } catch (SQLException e) {
         e.printStackTrace();
         return false;
         }
     }
+    
     
     public boolean editarEquipo(String numeroSerie, String nuevaCategoria, String nuevosDetalles) {
     try {

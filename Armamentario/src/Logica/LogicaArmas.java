@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 /**
  *
  * @author basty
@@ -141,23 +142,30 @@ public class LogicaArmas {
      
     public boolean darDeBajaArma(String numeroSerie) {
     try {
-        Connection cn = CConexion.getConnection();
-        CallableStatement cst = cn.prepareCall("{call DarDeBajaArma(?)}");
-        cst.setString(1, numeroSerie);
+        UIManager.put("OptionPane.yesButtonText", "Sí");
+        UIManager.put("OptionPane.noButtonText", "No");
+        int confirmacion = JOptionPane.showConfirmDialog(null, "¿Estás seguro que quieres dar de baja el arma?", "Confirmación", JOptionPane.YES_NO_OPTION);
 
-        int filasAfectadas = cst.executeUpdate();
-        if (filasAfectadas > 0) {
-            // Registrar el cambio en la tabla de cambios
-            LogicaArmas logicaArmas = new LogicaArmas();
-            String usuarioActual = SesionUsuario.getUsuarioActual();
-            logicaArmas.registrarCambio("Dar de Baja", "Se dio de baja un arma.", usuarioActual, numeroSerie);
+        if (confirmacion == JOptionPane.YES_OPTION) {
+            Connection cn = CConexion.getConnection();
+            CallableStatement cst = cn.prepareCall("{call DarDeBajaArma(?)}");
+            cst.setString(1, numeroSerie);
+
+            int filasAfectadas = cst.executeUpdate();
+            if (filasAfectadas > 0) {
+                LogicaEquipo logicaEquipo = new LogicaEquipo();
+                String usuarioActual = SesionUsuario.getUsuarioActual();
+                logicaEquipo.registrarCambio("Dar de Baja", "Se dio de baja un arma.", usuarioActual, numeroSerie);
+            }
+            return filasAfectadas > 0;
+        } else {
+            return false;
         }
-        return filasAfectadas > 0;
 
     } catch (SQLException e) {
         e.printStackTrace();
         return false;
-        }
+    }
     }
     
     public boolean retirarArma(String numeroSerie, String retiradoPor) {

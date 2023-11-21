@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
@@ -99,19 +100,25 @@ public class LogicaAdmin {
         }
     }
     public boolean eliminarUsuario(String usuario) {
-    try {
-        Connection cn = CConexion.getConnection();
-        CallableStatement cst = cn.prepareCall("{call EliminarUsuario(?)}");
-        cst.setString(1, usuario);
+        try {
+            UIManager.put("OptionPane.yesButtonText", "Sí");
+            UIManager.put("OptionPane.noButtonText", "No");
+            int confirmacion = JOptionPane.showConfirmDialog(null, "¿Estás seguro que quieres eliminar el usuario?", "Confirmación", JOptionPane.YES_NO_OPTION);
+            if (confirmacion == JOptionPane.YES_OPTION) {
+            Connection cn = CConexion.getConnection();
+            CallableStatement cst = cn.prepareCall("{call EliminarUsuario(?)}");
+            cst.setString(1, usuario);
 
-        int filasAfectadas = cst.executeUpdate();
+            int filasAfectadas = cst.executeUpdate();
 
-        return filasAfectadas > 0;
-
-    } catch (SQLException e) {
-        e.printStackTrace();
-        return false;
-    }
+            return filasAfectadas > 0;
+        }else {
+        return false;}
+            
+        }catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+    } 
 }
     
     public DefaultTableModel mostrarArmas() {
@@ -166,23 +173,28 @@ public class LogicaAdmin {
     
         public boolean EliminarArmaR(String numeroSerie) {
     try {
+        UIManager.put("OptionPane.yesButtonText", "Sí");
+        UIManager.put("OptionPane.noButtonText", "No");
+        int confirmacion = JOptionPane.showConfirmDialog(null, "¿Estás seguro que quieres eliminar el arma?", "Confirmación", JOptionPane.YES_NO_OPTION);
+        
+        if (confirmacion == JOptionPane.YES_OPTION) {
         Connection cn = CConexion.getConnection();
         CallableStatement cst = cn.prepareCall("{call EliminarArmaR(?)}");
         cst.setString(1, numeroSerie);
 
         int filasAfectadas = cst.executeUpdate();
         if (filasAfectadas > 0) {
-            // Registrar el cambio en la tabla de cambios
             LogicaArmas logicaArmas = new LogicaArmas();
             String usuarioActual = SesionUsuario.getUsuarioActual();
             logicaArmas.registrarCambio("Eliminar", "Se elimino el arma.", usuarioActual, numeroSerie);
         }
         return filasAfectadas > 0;
 
-    } catch (SQLException e) {
-        e.printStackTrace();
-        return false;
+            }else {return false;}
         }
+        catch (SQLException e) {
+        e.printStackTrace();
+        return false;}
     }
         
     public boolean verificarExistenciaArma(String numeroSerie) {
@@ -278,6 +290,11 @@ public class LogicaAdmin {
     
         public boolean EliminarEquipoR(String numeroSerie) {
     try {
+        UIManager.put("OptionPane.yesButtonText", "Sí");
+        UIManager.put("OptionPane.noButtonText", "No");
+        int confirmacion = JOptionPane.showConfirmDialog(null, "¿Estás seguro que quieres dar de baja el equipmaiento?", "Confirmación", JOptionPane.YES_NO_OPTION);
+        
+        if (confirmacion == JOptionPane.YES_OPTION) {
         Connection cn = CConexion.getConnection();
         CallableStatement cst = cn.prepareCall("{call EliminarEquipoR(?)}");
         cst.setString(1, numeroSerie);
@@ -290,12 +307,17 @@ public class LogicaAdmin {
             logicaEquipo.registrarCambio("Dar de Baja", "Se elimino un equipamiento.", usuarioActual, numeroSerie);
         }
         return filasAfectadas > 0;
+        } else {
+            return false;
+        }
 
     } catch (SQLException e) {
         e.printStackTrace();
         return false;
-        }
     }
+    }
+
+    
         
     public boolean verificarExistenciaEquipo(String numeroSerie) {
         try {
