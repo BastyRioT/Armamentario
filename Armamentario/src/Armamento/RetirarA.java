@@ -8,6 +8,7 @@ import Logica.LogicaArmas;
 import Pestañas.FrameArmas;
 import javax.swing.JOptionPane;
 import java.awt.Image;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 
 /**
@@ -25,6 +26,9 @@ public class RetirarA extends javax.swing.JFrame {
         this.frameArmas = frameArmas;
         txtNumero.setText(numeroSerie);
         txtRetirar.setText(retirado);
+        ButtonGroup grupoBotones = new ButtonGroup();
+        grupoBotones.add(rbSi);
+        grupoBotones.add(rbNo);
     }
 
 
@@ -98,7 +102,7 @@ public class RetirarA extends javax.swing.JFrame {
         });
         pnlFondo.add(rbNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Editar.png"))); // NOI18N
         pnlFondo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

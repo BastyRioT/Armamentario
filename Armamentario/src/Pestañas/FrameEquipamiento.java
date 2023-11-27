@@ -74,7 +74,7 @@ public class FrameEquipamiento extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         btnRegistrar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
+        btnDarDeBaja = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
         btnRetirar = new javax.swing.JButton();
         btnReingresar = new javax.swing.JButton();
@@ -185,16 +185,16 @@ public class FrameEquipamiento extends javax.swing.JFrame {
         });
         pnlFondo.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 170, 60));
 
-        btnEliminar.setBackground(new java.awt.Color(40, 114, 51));
-        btnEliminar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 20)); // NOI18N
-        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminar.setText("Dar de Baja");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+        btnDarDeBaja.setBackground(new java.awt.Color(40, 114, 51));
+        btnDarDeBaja.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 20)); // NOI18N
+        btnDarDeBaja.setForeground(new java.awt.Color(255, 255, 255));
+        btnDarDeBaja.setText("Dar de Baja");
+        btnDarDeBaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
+                btnDarDeBajaActionPerformed(evt);
             }
         });
-        pnlFondo.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 170, 60));
+        pnlFondo.add(btnDarDeBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 170, 60));
 
         btnVolver.setBackground(new java.awt.Color(40, 114, 51));
         btnVolver.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
@@ -299,7 +299,7 @@ public class FrameEquipamiento extends javax.swing.JFrame {
         realizarBusqueda();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+    private void btnDarDeBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBajaActionPerformed
 
         int filaSeleccionada = tblEquipo.getSelectedRow();
         if (filaSeleccionada != -1) {
@@ -314,7 +314,7 @@ public class FrameEquipamiento extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Por favor, selecciona un equipamiento para dar de baja.", "Error", JOptionPane.WARNING_MESSAGE);
         }
-    }//GEN-LAST:event_btnEliminarActionPerformed
+    }//GEN-LAST:event_btnDarDeBajaActionPerformed
 
     private void btnRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarActionPerformed
     int filaSeleccionada = tblEquipo.getSelectedRow();
@@ -404,8 +404,8 @@ public class FrameEquipamiento extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnDarDeBaja;
     private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnReingresar;
     private javax.swing.JButton btnRetirar;

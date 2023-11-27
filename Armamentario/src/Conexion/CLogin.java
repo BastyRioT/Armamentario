@@ -46,7 +46,7 @@ public class CLogin {
             }
             
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error: "+e.toString());
+            JOptionPane.showMessageDialog(null, "Error con la conexión, recuerda tener abierto y conectado XAMPP para que funcione correctamente");
         }
         return false;
     }
